@@ -1,1 +1,0 @@
-# choongsoo.github.io
