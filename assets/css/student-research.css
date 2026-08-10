@@ -1,0 +1,302 @@
+/* ==========================================================================
+   Student Research Page Styles (SLU Brand Aligned)
+   ========================================================================== */
+
+/* Search, Filter, and Sort Controls Container */
+/* Filter Bar Container */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0 2rem 0;
+  padding: 1.25rem;
+  background-color: var(--slu-tan, #FBF9F5);
+  border: 1px solid var(--slu-tan-dark, #e6dec9);
+  border-radius: 6px;
+  align-items: center;
+}
+
+/* Inputs and Dropdowns inside the Filter Bar */
+.filter-bar input[type="text"],
+.filter-bar select {
+  flex: 1 1 200px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--text, #333);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Search input taking slightly more breathing room */
+.filter-bar input[type="text"] {
+  flex: 2 1 260px;
+}
+
+/* Focus States matching SLU Scarlet accent */
+.filter-bar input[type="text"]:focus,
+.filter-bar select:focus {
+  outline: none;
+  border-color: var(--slu-scarlet, #AA182C);
+  box-shadow: 0 0 0 3px rgba(170, 24, 44, 0.1);
+}
+
+/* No Results State */
+.no-results {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #666;
+  font-style: italic;
+  background: #faf8f5;
+  border: 1px dashed #ddd;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+/* Individual Student Project Card */
+/* Student Research Project Cards */
+.project-card {
+  background: #FFFFFF;
+  border: 1px solid var(--slu-tan-dark, #E6DEC9);
+  border-left: 4px solid var(--slu-brown, #653A2B);
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Optional hover emphasis for interactive feedback */
+.project-card:hover {
+  border-color: var(--slu-tan-dark, #D3C7AB);
+  border-left-color: var(--slu-scarlet, #AA182C);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+
+.student-card:last-child {
+  border-bottom: none;
+}
+
+/* Optional Profile or Poster Photo */
+.student-photo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--slu-tan);
+  flex-shrink: 0;
+  background-color: #F9F8F5;
+}
+
+.student-details {
+  flex: 1;
+}
+
+.student-details .item-title {
+  font-family: "Garamond", "Times New Roman", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--slu-brown);
+  margin-bottom: 0.2rem;
+}
+
+/* Collapsible Abstract Toggle & Content */
+.abstract-toggle {
+  background: none;
+  border: none;
+  color: var(--slu-scarlet);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 0.6rem;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.abstract-toggle:hover {
+  text-decoration: underline;
+  color: var(--slu-brown);
+}
+
+.abstract-text {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #333333;
+  background: #FBF9F5;
+  padding: 0.85rem 1rem;
+  border-radius: 4px;
+  border-left: 3px solid var(--slu-scarlet);
+  line-height: 1.6;
+  display: none;
+}
+
+.abstract-text.open {
+  display: block;
+}
+
+/* ==========================================================================
+   Mobile & Responsive Adjustments
+   ========================================================================== */
+@media (max-width: 600px) {
+  .controls input,
+  .controls select {
+    flex: 1 1 100%;
+  }
+
+  .student-card {
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .student-photo {
+    width: 100%;
+    height: 180px;
+  }
+}
+
+/* ==========================================================================
+   Project Media Gallery & Lightbox Modal
+   ========================================================================== */
+.project-card.has-media {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 680px) {
+  .project-card.has-media {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .project-card.has-media .project-content {
+    flex: 1 1 65%;
+  }
+
+  .project-card.has-media .project-media-gallery {
+    flex: 0 0 110px;
+  }
+}
+
+.project-media-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.media-thumb-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 90px;
+  max-width: 110px;
+}
+
+.media-thumb {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--border-light);
+  background: var(--slu-tan);
+}
+
+.poster-thumb .presentation-thumb {
+  height: 80px;
+}
+.poster-thumb.zoomable {
+  cursor: zoom-in;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.poster-thumb.zoomable:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border-color: var(--slu-scarlet);
+}
+
+.profile-thumb {
+  aspect-ratio: 1 / 1;
+}
+
+.media-label {
+  font-size: 0.725rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  text-align: center;
+}
+
+/* Action Button Group */
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+/* Base Styled Action Links */
+.btn-link {
+  width: 110px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+/* PDF Poster Button Variant */
+.btn-link.btn-poster-pdf {
+  color: var(--slu-brown, #653A2B);
+  background-color: var(--slu-tan, #FBF9F5);
+  border: 1px solid var(--slu-brown, #653A2B);
+}
+
+.btn-link.btn-poster-pdf:hover {
+  background-color: var(--slu-brown, #653A2B);
+  color: #FFFFFF;
+}
+
+/* Read Paper: Primary Action (SLU Scarlet Accent) */
+.btn-link[href*="github"],
+.btn-link[href*="code"],
+.btn-link[href*="scholar"] {
+  color: #FFFFFF;
+  background-color: var(--slu-scarlet, #AA182C);
+  border: 1px solid var(--slu-scarlet, #AA182C);
+}
+
+.btn-link[href*="github"]:hover,
+.btn-link[href*="code"]:hover,
+.btn-link[href*="scholar"]:hover {
+  background-color: #8C1324;
+  border-color: #8C1324;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+/* View Code: Secondary Action (SLU Tan/Brown Secondary) */
+.btn-link[href*="poster"] {
+  color: var(--slu-brown, #653A2B);
+  background-color: var(--slu-tan, #FBF9F5);
+  border: 1px solid var(--slu-tan-dark, #E6DEC9);
+}
+
+.btn-link[href*="github"]:hover,
+.btn-link[href*="code"]:hover,
+.btn-link[href*="poster"]:hover {
+  background-color: #F0EAD8;
+  border-color: var(--slu-brown, #653A2B);
+  color: var(--slu-brown, #653A2B);
+}
+
+/* Focus states for accessibility */
+.btn-link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(170, 24, 44, 0.3);
+}
+

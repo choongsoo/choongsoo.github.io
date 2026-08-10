@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- SLU Scarlet Rounded Square Badge -->
+  <rect width="64" height="64" rx="14" fill="#AA182C"/>
+  
+  <!-- "CS" Serif Monogram in SLU Tan -->
+  <text 
+    x="32" 
+    y="35" 
+    font-family="Garamond, 'Times New Roman', Georgia, serif" 
+    font-size="30" 
+    font-weight="bold" 
+    letter-spacing="-1.5" 
+    fill="#FBF9F5" 
+    text-anchor="middle" 
+    dominant-baseline="middle">
+    CS
+  </text>
+</svg>

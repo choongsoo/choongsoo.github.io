@@ -1,0 +1,146 @@
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  background: #F9F8F5;
+  padding: 0.85rem;
+  border-radius: 4px;
+  border: 1px solid var(--slu-tan);
+}
+
+.controls input,
+.controls select {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--slu-lt-warm-gray);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background: #ffffff;
+  color: var(--slu-brown);
+}
+
+.controls input {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.controls select {
+  flex: 1 1 140px;
+}
+
+.student-card {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.student-card:last-child {
+  border-bottom: none;
+}
+
+.student-photo {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--slu-tan);
+  flex-shrink: 0;
+}
+
+.abstract-toggle {
+  background: none;
+  border: none;
+  color: var(--slu-scarlet);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 0.5rem;
+}
+
+.abstract-text {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #333;
+  background: #FBF9F5;
+  padding: 0.75rem;
+  border-radius: 4px;
+  border-left: 3px solid var(--slu-scarlet);
+  display: none;
+}
+
+.abstract-text.open {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .student-card {
+    flex-direction: column;
+  }
+  .student-photo {
+    width: 100%;
+    height: 180px;
+  }
+}
+
+/* Intro Text Styling */
+.teaching-intro-text {
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* Current Semester Courses Highlights */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Current Semester Course Cards */
+.current-course-card {
+  background: #FBF9F5;
+  border: 1px solid var(--slu-tan);
+  border-left: 4px solid var(--slu-scarlet);
+  border-radius: 4px;
+  padding: 1.25rem;
+}
+
+.current-course-card .item-title {
+  font-family: "Garamond", "Times New Roman", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--slu-brown);
+}
+
+@media (max-width: 600px) {
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Sabbatical Callout Card */
+.sabbatical-card {
+  background-color: #FBF9F5;
+  border: 1px solid var(--slu-tan);
+  border-left: 4px solid var(--slu-brown);
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem;
+}
+
+.sabbatical-title {
+  font-family: "Garamond", "Times New Roman", serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--slu-brown);
+  margin-bottom: 0.4rem;
+}
+
+.sabbatical-card p {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}

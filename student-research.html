@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <title>Dr. Choong-Soo Lee @ SLU | Undergraduate Student Research</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/student-research.css" />
+</head>
+<body>
+
+  <!-- Injected Header Container -->
+  <header id="site-header"></header>
+
+  <main class="container">
+    <h2>Student Research</h2>
+    <p id="research-intro"></p>
+
+    <!-- Filter & Search Bar -->
+    <div class="filter-bar">
+      <!-- Search Input -->
+      <input 
+        type="text" 
+        id="research-search" 
+        placeholder="Search by title, student, tag..." 
+      />
+
+      <!-- Type Filter -->
+      <select id="research-type-filter">
+        <option value="all">All Project Types</option>
+        <option value="SYE">Senior Year Experience (SYE)</option>
+        <option value="Summer">Summer Research</option>
+      </select>
+
+      <!-- Tag Filter (Dynamically Populated) -->
+      <select id="research-tag-filter">
+        <option value="all">All Tags</option>
+      </select>
+
+      <!-- Sort Options -->
+      <select id="research-sort">
+        <option value="year-desc">Year (Newest First)</option>
+        <option value="year-asc">Year (Oldest First)</option>
+        <option value="student-asc">Student Last Name (A–Z)</option>
+      </select>
+    </div>
+
+    <!-- Dynamic List Container -->
+    <div id="student-research-list" class="projects-grid"></div>
+  </main>
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/student-research.js"></script>
+</body>
+</html>

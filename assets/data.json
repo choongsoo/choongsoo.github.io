@@ -1,0 +1,803 @@
+{
+  "profile": {
+    "name": "Dr. Choong-Soo Lee",
+    "title": "Associate Professor of Computer Science",
+    "institution": "St. Lawrence University",
+    "bio": "Dr. Choong-Soo Lee attended Wesleyan University as an undergraduate where he majored in Computer Science, Economics, and Physics. In 2010, he earned his Ph.D. in Computer Science at WPI. In 2013, he joined St. Lawrence University after teaching at Gustavus Adolphus College for three years. His areas of research include multimedia, home networks, and human computer interaction. While earning his Ph.D, Dr. Lee took a leave of absence to complete his mandatory military service in South Korea where he worked with both Republic of Korea and U.S. military officers. His non-academic interests include classical music, hiking, and video games.",
+    "photo": "assets/profile.jpg",
+    "contact": {
+      "email_user": "clee",
+      "email_domain": "stlawu.edu",
+      "appointment_url_b64": "aHR0cHM6Ly9jYWxlbmRseS5jb20vY2hvb25nc29vL21lZXRpbmc="
+    }
+  },
+  "teaching": {
+    "intro": "Teaching has been such a rewarding experience to me in and out of class. I have been a teaching assistant for various undergraduate computer science courses as well as a primary instructor at Worcester Polytechnic Institute. From 2010 to 2013, I taught at Gustavus Adolphus College as a visiting assistant professor. I also took steps to improve myself as a more effective teacher by completing a Certificate in College Teaching Program.",
+    "current_term_label": "Fall 2026",
+    "courses": [
+      {
+        "code": "CS 140",
+        "title": "Introduction to Computer Programming",
+        "terms_taught": [],
+        "description": "An introduction to programming using a high-level language. Assumes no prior knowledge of programming and focuses on essential skills. Students learn to create programs ranging from practical utilities to simple games."
+      },
+      {
+        "code": "CS 219",
+        "title": "Intermediate Computer Programming",
+        "terms_taught": ["Spring 2026", "Fall 2026"],
+        "description": "An in-depth look at computing and programming in a high-level language. Introduces more advanced programming problems and more principled programming techniques."
+      },
+      {
+        "code": "CS 256",
+        "title": "Data Structures",
+        "terms_taught": [],
+        "description": "An in-depth look at the essential strategies for the organization, retrieval, and processing of data. Topics include arrays, lists, stacks, queues, maps, and trees, as well as an introduction to algorithm analysis."
+      },
+      {
+        "code": "CS 321",
+        "title": "Computer Networking & Security",
+        "terms_taught": ["Fall 2026"],
+        "description": "An overview of computer networking and the technologies critical to the implementation and security of  the internet. Topics include protocols at the application level (HTTP, SMTP, DNS), transport level (TCP, UDP), network level (IP), and data link level (Ethernet, WiFi), as well as issues related to network security."
+      },
+      {
+        "code": "CS 370",
+        "title": "Operating Systems & Security",
+        "terms_taught": ["Fall 2026"],
+        "description": "An overview of operating system principles and security considerations. Topics include process scheduling, isolation, and synchronization; memory management including virtual memory; file system interfaces and implementations; access control; and virtualization and containerization."
+      },
+      {
+        "code": "CS 4017",
+        "title": "Game Development",
+        "terms_taught": ["Spring 2026"],
+        "description": "This course explores the principles and practices of modern game development through hands-on experience with the Unity engine. Students learn the fundamentals of game architecture, real-time rendering, physics, input systems, user interfaces, and asset integration. In addition to technical implementation, the course explores design thinking, playability, and iteration as essential components of the development process."
+      }
+    ]
+  },
+  "student_research": {
+    "intro": "Every student pursuing a major in Mathematics, Computer Science, or Statistics is required to complete a Senior Year Experience (SYE) project, which counts as a one semester course. It is possible to spread the project out over a full year.\n\nSt. Lawrence University Summer Fellowship is a summer research program for undergraduates to:\n* Provide new opportunities for student intellectual growth\n* Support students in undertaking new initiatives that require special financial support\n* Promote close student-faculty collaboration outside of the regular academic calendar\n- Enable students to explore lines of inquiry without the immediate expectation of academic credit, in order to lay the foundation for integrative, credit-bearing activity that can take place during the next academic year\n* Encourage interdisciplinary lines of inquiry, as well as those within traditional disciplines\n* Recognize seriousness of purpose in students who seek to build imaginatively on their past achievements.\n\nThe SLU Fellowship is a great opportunity for both students and me to fully invest our efforts over a nine week period on exciting projects.",
+    "projects": [
+      {
+        "id": "sye-2027-tbd",
+        "title": "TBD",
+        "type": "SYE",
+        "year": 2027,
+        "students": ["Eunjin Han"],
+        "abstract": "TBD",
+        "tags": ["Mobile Development", "Engineering"],
+        "images": {
+          "profiles": [
+            {
+            "url": "assets/projects/profile/han27-profile.jpg",
+            "alt": "Eunjin Han"
+            }
+          ]
+        },
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "sye-2027-dinosaurs",
+        "title": "TBD",
+        "type": "SYE",
+        "year": 2027,
+        "students": ["Ryan Darby"],
+        "abstract": "TBD",
+        "tags": ["Game Development", "Geology", "Dinosaur", "Video Game"],
+        "images": {
+        },
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "sye-2025-dnd",
+        "title": "Optimizing Combat in Dungeons & Dragons: A Unity-Based Simulation",
+        "type": "SYE",
+        "year": 2025,
+        "students": ["Molly Sullivan"],
+        "abstract": "Tabletop role-playing games like Dungeons & Dragons (D&D) require strategic decision-making and effective team coordination. Yet assessing how well a party will perform in combat encounters, before actual gameplay, remains largely speculative and inconsistent. This project presents the development of a battle simulator for D&D, created using Unity and C#, designed to provide a better method of testing and analyzing combat scenarios. Ultimately, this project demonstrates how computational tools can bring greater clarity to the improvisational world of tabletop gaming.",
+        "tags": ["Dungeons & Dragons", "Unity", "Simulation"],
+        "images": {
+          "poster": {
+            "url": "assets/projects/sye/2025-sullivan-poster.pdf",
+            "alt": "Festival of Science, Scholarship, and Creativity Poster"
+          }
+        },
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "sye-2022-clash-royale",
+        "title": "Using Ego Networks and Lasso Regression to Model Synergy in Clash Royale",
+        "type": "SYE",
+        "year": 2022,
+        "students": ["Siyuan (Tom) Zhang"],
+        "abstract": "Clash Royale is a popular real-time strategy video game that was released in 2016. A typical match consists of two players battling against each other using their pre-constructed decks of eight cards. In total, there are over 100 cards available in the game. The goal of our project is to investigate synergistic relationships among these cards by analyzing match data. We developed a method involving lasso regression and ego networks to model and visualize the over 10,000 possible interactions between cards. Some notable technical aspects involved implementing a data collection pipeline with Python, designing a PostgreSQL database, training regression models in R, and building a web app with JavaScript to showcase the final results. This nontrivial project illustrates how a video game can be made academic. Further, the processes and techniques utilized are not limited to esports analytics and could be applied to disciplines with similarly structured data.",
+        "tags": ["Clash Royale", "Database", "Modeling", "Video Game"],
+        "images": {
+          "profiles": [
+            {
+            "url": "assets/projects/profile/zhang22-profile.jpg",
+            "alt": "Siyuan (Tom) Zhang"
+            }
+          ],
+          "poster": {
+            "url": "assets/projects/sye/2022-zhang-poster.pdf",
+            "alt": "Festival of Science, Scholarship, and Creativity Poster"
+          }
+        },
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "sye-2020-unity",
+        "title": "Physics Engine Re-imagined in Unity",
+        "type": "SYE",
+        "year": 2020,
+        "students": ["Isaac Brinkman"],
+        "abstract": "I create a replication of Unity's physics engine and customize my engine in order to gain a better understanding for the underlying code hidden from the normal game developer.",
+        "tags": ["Game Engine", "Unity", "Physics", "Video Game"],
+        "images": {
+          "profiles": [
+            {
+            "url": "assets/projects/profile/brinkman20-profile.jpg",
+            "alt": "Isaac Brinkman"
+            }
+          ],
+          "poster": {
+            "url": "assets/projects/sye/2020-brinkman-poster.pdf",
+            "alt": "Festival of Science, Scholarship, and Creativity Poster"
+          }
+        },
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "sye-2020-jt-game-engine",
+        "title": "Designing & Implementing a Game Engine",
+        "type": "SYE",
+        "year": 2020,
+        "students": ["Joshua Epstein", "Travonte Wheeler"],
+        "abstract": "JT Game Engine is a game engine created to produce 2D games. This project originally started off as a quest to create a FPS video game using the game engine Unreal. After careful thought and input the projects goal was change into creating a game engine that would be used to create 2D games. The code for the engine in written in Java. The engine itself is comprised of seven classes shown in the diagram to the right. he game engine has be fined tuned to provide easy use for the game creator to create 2D games.",
+        "tags": ["Game Engine", "Game Development", "Java", "Video Game"],
+        "images": {
+          "profiles": [
+            {
+            "url": "assets/projects/profile/epstein20-profile.jpg",
+            "alt": "Joshua Epstein"
+            },
+            {
+            "url": "assets/projects/profile/wheeler20-profile.jpg",
+            "alt": "Travonte Wheeler"
+            }
+          ]
+        },
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "sye-2020-climate",
+        "title": "Visualizing Weather/Climate and Their Impact on Economy/Society",
+        "type": "SYE",
+        "year": 2020,
+        "students": ["Remi LeBlanc"],
+        "abstract": "As climate change is raising temperatures all over the globe, cities are being disproportionately effected by these rises. In comparison to cities' rural areas, the rapid rise of average temperatures is striking. This is known as the Urban Heat Island Effect (Environmental Protection Agency). Using inspiration from Climate Central's methodology, I chose four rural weather stations around a city to the north, south, east and west and collected all available daily temperature data from each station using Dark Sky API and ACIS Regional Climate Centers. I found that daily minimum temperatures, often at night, are rising in cities much faster than in surrounding rural areas.",
+        "tags": ["Climate", "Data Visualization", "Darksky API"],
+        "images": {
+          "profiles": [
+            {
+            "url": "assets/projects/profile/leblanc20-profile.jpg",
+            "alt": "Remi LeBlanc"
+            }
+          ],
+          "poster": {
+            "url": "assets/projects/sye/2020-leblanc-poster.pdf",
+            "alt": "Festival of Science, Scholarship, and Creativity Poster"
+          }
+        },
+        "paper_url": "https://github.com/RemiWLeBlanc/Urban-Heat-Island-Effect-Visualizations",
+        "code_url": null
+      },
+      {
+        "id": "sye-2019-wechat",
+        "title": "Intelligent Assistant with Natural Language Understanding for WeChat",
+        "type": "SYE",
+        "year": 2019,
+        "students": ["Sai Wei"],
+        "abstract": "This Senior Year Experience project is a continued project from my SLU Fellowship research project, \"Aptapp: An In-app Assistant Providing Helpful Guidance on WeChat Functionality.\" Starting from the goal of user-experience optimizing, I re-developed Aptapp and researched into Natural Language Processing (NLP) techniques for the past semester. Since WeChat had a major update for mini-programs in August, I eliminated the old design, which requires transitions between three platforms with many redundancies in terms of interactions. Keeping the old features like floating window and background audio playing, new Aptapp allows users to search for guidance with keywords and get access to the guidance easily without leaving the mini-program. On the other hand, I started my research in NLP by reading relative resources and following along open online courses to learn the basic concept. Because of the time limitation, I did not get to implement my own NLP system or model this semester. Instead, I wrote a paper summarizing the basic concepts and implementation techniques I have learned about NLP to enhance my understanding in this field.",
+        "tags": ["Natural Language Processing", "Mobile Development", "WeChat"],
+        "images": {
+        },
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "sye-2018-nodejs",
+        "title": "Implementing a Service Request and Response Platfrom using Node.js",
+        "type": "SYE",
+        "year": 2018,
+        "students": ["Nevaan Perera"],
+        "abstract": "N/A",
+        "tags": ["Web Development", "Node.js"],
+        "images": {
+          "profiles": [
+            {
+            "url": "assets/projects/profile/perera19-profile.jpg",
+            "alt": "Nevaan Perera"
+            }
+          ]
+        },
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "sye-2018-led-light",
+        "title": "Developing a Mobile Application Controlled LED Light System Using Raspberry Pi",
+        "type": "SYE",
+        "year": 2018,
+        "students": ["Evan Page"],
+        "abstract": "here are many LED light-strip systems that are controlled by a remote or a mobile application on your phone. This project uses a Raspberry Pi system (a small single-board computer) to build a similar system from scratch. The Raspberry Pi system powers and controls the Led lights, and accepts messages from an Android app. Using the microphone, the Android app listens to music, and analyzes it to compute the colors for the LED system. Then, the app communicates the colors by sending UDP (user-datagram protocol) messages to the Raspberry Pi system. Preliminary testing results demonstrate that it provides a positive experience to the audience, and further testing will help tune the system for a better experience.",
+        "tags": ["Mobile Development", "Raspberry Pi"],
+        "images": {
+          "profiles": [
+            {
+            "url": "assets/projects/profile/page18-profile.jpg",
+            "alt": "Evan Page"
+            }
+          ]
+        },
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "sye-2017-dailyhabit",
+        "title": "DailyHabit.co",
+        "type": "SYE",
+        "year": 2017,
+        "students": ["Soukaina Alami Idrissi"],
+        "abstract": "Dailyhabit is an online web application which lets you keep track of your daily habits and long-term goals. I started this project during the web programming course with Prof. Lisa Torrey and turned it into a Senior Year project. I will be talking about how I acquired a domain and launched the website online, as well as the different tools and functionalities that I added to the web application.",
+        "tags": ["Web Development"],
+        "images": {
+          "profiles": [
+            {
+            "url": "assets/projects/profile/alami17-profile.jpg",
+            "alt": "Soukaina Alami Idrissi"
+            }
+          ]
+        },
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "sye-2016-apr21",
+        "title": "APR2.1: A Google Chrome Extension",
+        "type": "SYE",
+        "year": 2016,
+        "students": ["Madison Rusch"],
+        "abstract": "As my Senior Year Honors Project, I worked on improving the end-user experience of APR2. APR2 is currently used by students, faculty, and staff, making this an ideal project to reach a wide audience within the St. Lawrence community. Using JavaScript, HTML, and CSS, I built and debugged a Google Chrome extension to augment the APR2 website. My extension provides a course catalog with additional features to the current website in an attempt to make the catalog more user-friendly and navigable. Throughout the project, I improved my understanding of web programming and computer networks as well as my ability to code. The goal of this extension is to help the St. Lawrence community utilize the APR2 website to its fullest potential.",
+        "tags": ["Web Development", "Javascript"],
+        "images": {
+          "profiles": [
+            {
+            "url": "assets/projects/profile/rusch16-profile.jpg",
+            "alt": "Madison Rusch"
+            }
+          ]
+        },
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "sye-2016-videogame",
+        "title": "Videogames and you! A look at small scale videogame development",
+        "type": "SYE",
+        "year": 2016,
+        "students": ["Edward Morreale"],
+        "abstract": "Videogames have been played and enjoyed for decades, but just how exactly is one constructed? In this presentation I will be giving my experiences in video game development. There are many different processes that are involved when even doing simple things like getting a character to move across the screen, and this can overwhelming to someone looking in from the outside. The goal of the presentation is to give a high level overview of the game development process, and looking at how some of the different components of games relate to the classes I have taken here at St. Lawrence. Additionally, I will talk about what are some practices that both professionals and other independent designers conduct. Other non-programming aspects of game development such as art and music will be discussed as well. The talk will conclude with a demo of my current progress.",
+        "tags": ["Game Development", "Game Engine", "C++", "Video Game"],
+        "images": {
+        },
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "sye-2016-toxicity",
+        "title": "The use of toxicity score and advanced matchmaking algorithm in improving MOBA gaming experience",
+        "type": "SYE",
+        "year": 2016,
+        "students": ["Zhengjing Chu"],
+        "abstract": "Players are grouped into teams for matches in Multiplayer Online Battle Arena (MOBA) games, and their gaming experience heavily depends on their teammates. Teammates with toxic behaviors can negatively impact players' experience. Our goal is to develop an optimal toxicity vector to identify toxic players with sufficient classification rate. First, we design a simulation program to create a simplified gaming environment with three type of players: positive, neutral and toxic. After each match, all players provide feedback about their teammates. A wide range of simulation configurations are tested to determine how well the toxicity score method works compared to random matching.",
+        "tags": ["Toxicity", "Algorithm", "Simulation", "Video Game"],
+        "images": {
+        },
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "sye-2015-flights",
+        "title": "Haggle with Google Flight: Predicting flight prices",
+        "type": "SYE",
+        "year": 2015,
+        "students": ["Son Vuong"],
+        "abstract": "In today's internet Age, travel agent is a profession of the past. So, how do you haggle with that flight search engine to get the best price on your flight home? This talk focuses on the relationship between the percentile of flights' prices and various search options that a user can configure. The target variable, predicted percentile, shows where a particular query configuration lies in the range of historical prices. By using this variable, we would be able to determine whether that particular price is the deal of your life! Queried via Google Flights Engine on a fixed set of destinations, our data consists of over 2 millions flights. We explored this complex relationship on three different levels:a fixed trip with given origin, destination, departure date and return date; a flexible trip given a range of departure date and return date; and a vacation trip given the fixed trip length of 9 days, that occurred in the next 300 days.",
+        "tags": ["Google API", "Flight", "Modeling"],
+        "images": {
+        },
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "sye-2015-farm",
+        "title": "Old McDonald had a Sensor",
+        "type": "SYE",
+        "year": 2015,
+        "students": ["Kirby Kaylor"],
+        "abstract": "High tunnels are gaining popularity in farming communities as they allow for vegetables to be grown all year. When the outside temperature is too cold, the sides can be rolled down to capture the sun's natural heat, while minimizing heat loss. When the outside temperature is warm enough, the sides can be rolled up to prevent overheating. However, these high tunnels tend to be out in fields, making them too far away to run electricity. This project programs \"motes\" to not only provide the sensors to read temperature and humidity, but also create an ad hoc network to wirelessly transmit their data.",
+        "tags": ["Sensor", "C", "Ad Hoc Network"],
+        "images": {
+          "profiles": [
+            {
+            "url": "assets/projects/profile/kaylor15-profile.jpg",
+            "alt": "Kirby Kaylor"
+            }
+          ]
+        },
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "sye-2015-mobile-order",
+        "title": "Northstar Cafe Mobile Order App",
+        "type": "SYE",
+        "year": 2015,
+        "students": ["Thomas Ball", "Jeremiah Bunton"],
+        "abstract": "At noon every day, the North Star cafe becomes swamped with students all trying to get food in the brief time they have between classes. Heavy load on dining services often results in orders that are not fill in time for the next class period, and these late orders are wasted. The understaffed cafe had to cut services such as allowing orders to be phoned in to avoid wasted food, causing customer dissatisfaction. While both Thelmo and Dining services are trying to find a solution for dealing with the lunch rush in an efficient manner, I would like to propose my own solution. An electronic system of placing and paying for orders allows the dining services to receive orders remotely that are already sorted to the right station without taking an employee away from his/her duty. My SYE focuses on building a consumer side interface, an Android app, with which users can browse the menu and place and pay for orders. The orders are stored in a database and can be accessed by users and café staff. Surveying a pool of customers and researching the application cycle and required network resources, I developed an Android app that currently supports menu browsing and storing orders in a database as a proof of concept. The system can be expanded to accept payments and allow the cafe staff to receive and analyze orders to meet the customers' needs better.",
+        "tags": ["Mobile Development"],
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "summer-2025-smart-pet",
+        "title": "Smart Pet Healthcare: Anomaly Detection in Heart Rate Data Using an iOS App",
+        "type": "Summer",
+        "year": 2025,
+        "students": ["Eunjin Han"],
+        "images": {
+          "profiles": [
+            {
+            "url": "assets/projects/profile/han27-profile.jpg",
+            "alt": "Eunjin Han"
+            }
+          ],
+          "poster": {
+            "url": "assets/projects/summer/2025-han-poster.pdf",
+            "alt": "Laurential Weekend Internship Fellowship Poster"
+          },
+          "presentation": {
+            "url": "assets/projects/summer/2025-han-presentation.jpg",
+            "alt": "Laurential Weekend Internship Fellowship Poster Presentations"
+          }
+        },
+        "abstract": "This summer research project focused on developing a smart healthcare monitoring system for pets through an iOS mobile application. The goal was to provide pet owners with real-time insights into their pets' heart health using data visualization and health monitoring logic.\n\nThe project involved exploring veterinary literature to determine healthy heart rate ranges for cats and dogs, taking into account factors such as species, size, and age. Based on this research, an abnormality detection algorithm was developed to alert users to potential health concerns.\n\nThe app, built using SwiftUI, displays heart rate data numerically and alerts users to any irregularities, helping pet owners monitor their pets' well-being with ease. This research combined interests in healthcare technology and mobile development, demonstrating how accessible software tools can enhance everyday animal care.",
+        "tags": ["Mobile Development", "Smart Healthcare", "Swift"],
+        "paper_url": "https://scholar.stlawu.edu/eunjin-han/smart-pet-healthcare-anomaly-detection-heart-rate-data-using-ios-app",
+        "code_url": null
+      },
+      {
+        "id": "summer-2020-admissions",
+        "title": "Data Visualization for the Admissions Office",
+        "type": "Summer",
+        "year": 2020,
+        "students": ["Eduardo Puerta"],
+        "images": {
+          "profiles": [
+            {
+            "url": "assets/projects/profile/puerta20-profile.jpg",
+            "alt": "Eduardo Puerta"
+            }
+          ]
+        },
+        "abstract": "The Admissions Office at St. Lawrence University reaches out to students through email campaigns throughout their application process for reminder, yields and general communication. Understanding the effectiveness of an email campaign and its reach allows outreach teams within the office to develop content more tailored to the needs of the recipients. The project consists in creating a data visualization web application that takes data from the Admissions and Financial Aid Customer Report Management System to create graphical representations of campaign metrics. The application was designed to incorporate modularity of classes and statistical methods to calculate success metrics for campaigns. The development process involved evaluating and comparing different program architectures to design the program for scalability and extensibility.",
+        "tags": ["Data Visualization", "Java"],
+        "paper_url": "https://www.stlawu.edu/scholar/data-visualization-admissions-office",
+        "code_url": null
+      },
+      {
+        "id": "summer-2019-wechat",
+        "title": "Aptapp: An In-app Assistant Providing Helpful Guidance on WeChat Functionality",
+        "type": "Summer",
+        "year": 2019,
+        "students": ["Sai Wei"],
+        "images": {
+          "poster": {
+            "url": "assets/projects/summer/2019-wei-poster.pdf",
+            "alt": "Laurential Weekend Internship Fellowship Poster"
+          },
+          "presentation": {
+            "url": "assets/projects/summer/2019-wei-presentation.jpg",
+            "alt": "Laurential Weekend Internship Fellowship Poster Presentations"
+          }
+        },
+        "abstract": "WeChat is the most widely used, multi-function super app in China, bringing convenience to every aspect of users’ daily life. However, novice users, those who are new to technology, are having a hard time trying to catch up with the updating functions in WeChat. Aptapp is a WeChat mini-program that allows users to easily get access to specific WeChat guidance with an intelligent customer service responding system. Launched by WeChat team in 2017, mini-programs are the sub-applications aiming to provide more possibilities for WeChat users. Customer service is one of the function components supported by the mini-program API. Working with cloud functions, the customer service in Aptapp is able to respond to users’ requests by sending back the corresponding web-link to the requested guidance. In order to make Aptapp more helpful for novice users, by analyzing the updating features and API’s from WeChat, Aptapp is expected to require less interactions but to provide more intelligent responding system to users in the future.",
+        "tags": ["Mobile Development", "WeChat"],
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "summer-2018-overwatch",
+        "title": "High Bandwidth Mode in Overwatch",
+        "type": "Summer",
+        "year": 2018,
+        "students": ["Guinevere Gilman"],
+        "images": {
+          "poster": {
+            "url": "assets/projects/summer/2018-gilman-poster.pdf",
+            "alt": "Laurential Weekend Internship Fellowship Poster"
+          },
+          "presentation": {
+            "url": "assets/projects/summer/2018-gilman-presentation.jpg",
+            "alt": "Laurential Weekend Internship Fellowship Poster Presentations"
+          }
+        },
+        "abstract": "Interactive applications such as multiplayer online games require user interactions to be possible, because handled responsively, with the smallest amount of delay users must respond rapidly to the actions of other users in these types of games. A delay of even 50ms has been determined to make some multiplayer games to be frustrating and unplayable in previous investigations. However, there has not been sufficient research conducted to determine an acceptable threshold of delay for the playability of more modern games, as much of the data collected has been from games created in the 1990s and early 2000s.\nThis research focused on one of the most popular modern multiplayer team-based multiplayer games, known as Overwatch, which has made the claim that its relatively new high bandwidth mode will drastically increase the quality of experience bandwidth. It for players. It also claims to group is a first-person shooter, where two players with teams of six similar players compete against each other to fulfill various objectives using player characters with different types of weapons including hit-scan and projectile-based ones.",
+        "tags": ["Network Analysis", "Overwatch", "Video Game"],
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "summer-2018-kinect",
+        "title": "Application of Gesture Control on Digital Screen Display",
+        "type": "Summer",
+        "year": 2018,
+        "students": ["Xuanming Cui"],
+        "images": {
+          "poster": {
+            "url": "assets/projects/summer/2018-cui-poster.pdf",
+            "alt": "Laurential Weekend Internship Fellowship Poster"
+          },
+          "presentation": {
+            "url": "assets/projects/summer/2018-cui-presentation.jpg",
+            "alt": "Laurential Weekend Internship Fellowship Poster Presentations"
+          }
+        },
+        "abstract": "The primary goal of this research is to develop a way of using gesture to control digital screen in public scenarios, such as ads display, digital building directories etc. The device for recognizing gesture is Kinect V2,  a motion sensor developed by Microsoft. Since the target group is passer-by-people, the gesture controls need to be simple and intuitive. The final method I adopted is to use hand to control the cursor and thus control the screen.",
+        "tags": ["Data Visualization", "Java"],
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "summer-2017-kinect",
+        "title": "An Xbox Kinect Approach: Transforming Projector Screens into Interactive Smart-boards using the Xbox Kinect",
+        "type": "Summer",
+        "year": 2017,
+        "students": ["Nevaan Perera"],
+        "images": {
+          "presentation": {
+            "url": "assets/projects/summer/2017-perera-presentation.jpg",
+            "alt": "Laurential Weekend Internship Fellowship Poster Presentations"
+          }
+        },
+        "abstract": "Smartboards add numerous benefits to the classroom experience such as easy writing and highlighting, surfing the web and controlling computer applications. These features significantly facilitate learning and teaching in the classroom; however, smartboards are with many shortcomings. Some of these shortcomings include cost, requirement of electronic pens and limitation of instructor participation. The current project intended to use the Xbox Kinect, which is a highly advanced depth sensor camera, to detect human body movements and execute tasks/applications on a projected screen. By leveraging such technology, we can transform regular projector screens into smart-boards, that are controlled just by the human body.",
+        "tags": ["Data Visualization", "Java"],
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "summer-2017-movements",
+        "title": "Exploring How to Simulate a Person’s Mouse Movements",
+        "type": "Summer",
+        "year": 2017,
+        "students": ["Khang Le"],
+        "images": {
+          "presentation": {
+            "url": "assets/projects/summer/2017-le-presentation.jpg",
+            "alt": "Laurential Weekend Internship Fellowship Poster Presentations"
+          }
+        },
+        "abstract": "Today, human computer interaction (HCI) studies propose practical applications to offer many ways to promote human life. One of the HCI projects is aimed at reducing frustration and improving the ability to manipulate the cursor when interacting with a computer that is not optimal for people with motor impairments. However, the research about these devices seems to be slow since they are required to conduct extensive testing and also involve human participation. Normally, this type of research might take years to finish. Therefore, I would like to investigate whether it would be possible to build a device that simulates a human’s mouse movements by collecting data from the human’s actual cursor movements and some simple actions such as clicking an icon on the screen. If it is possible to build such a device, we can accelerate many projects on the field of HCI research that assists in pointing tasks. The reason is by emulating human mouse’s movement from such a desired simulator, we do not need to find actual people to do the test of efficiency for the devices facilitating the use of computer for those people with motor impairments.",
+        "tags": ["Human Computer Interaction", "Modeling"],
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "summer-2015-knot",
+        "title": "knot! Bringing the Web Browser to the 21st Century",
+        "type": "Summer",
+        "year": 2015,
+        "students": ["Sean Godard"],
+        "images": {
+          "poster": {
+            "url": "assets/projects/summer/2015-godard-poster.pdf",
+            "alt": "Laurential Weekend Internship Fellowship Poster"
+          },
+          "presentation": {
+            "url": "assets/projects/summer/2015-godard-presentation.jpg",
+            "alt": "Laurential Weekend Internship Fellowship Poster Presentations"
+          }
+        },
+        "abstract": "Over the past decades, while other technologies have undergone a rapid evolution, the web browser interface, specifically the tab system, has remained relatively unchanged despite the internet’s growing and changing usage. Experiencing this issue first hand, I was looking to improve this multi-document management system. The diagrams used in graph theory inspired me to display all open documents simultaneously on screen, with visible lines connecting related documents in clusters of more related documents. These links would be both manually and automatically created based on the content of the pages. Users could then navigate the mesh by zooming into and out of related document clusters and also pan around to other documents and clusters. There would also be a bar along the bottom with tab and group previews such that, when touched, would quickly center on that cluster or document for further quick content access. Users would also have the ability to independently change the size ratio and zoom level of the documents displayed on screen. The interface would then also support standard web browsers features, such as bookmarking and history. Further, all navigation in the interface would occur through either touch or mouse gestures.\nFirst, I started to research user interface designs before moving on to implementing my interface to test its usefulness. I implemented the browser in Java, a language which I already had a lot of experience in, and a library called JavaFX. JavaFX is an application program interface (API) to assist in creating graphical user interfaces. Having less experience with this API, part of the summer was spent learning this library to create the user interface. Also, I learned how to deal with touch gestures, and, gained further experience in handling concurrent events, which is often considered a trickier aspect of programming. After several weeks of development, I began to discover that building an entire web browser from almost the ground up was more complicated than anticipated, especially since my interface has many features that most current web browsers do not have. For this reason, I was unable to implement the ability for documents to be manually and automatically linked together. Also, implementing the web browser and continuing to research interface options led me to come up with more features I would like to add and support. Specifically, I have new ideas on improving performance of my browser with a large number of web documents and navigation of document clusters. Although I was unable to complete the project at this time, it will certainly not be put to rest. I now feel confident in my ability to continue the development of this project over the coming years with hope that one day it will become a design model for future web browsers.",
+        "tags": ["Browser", "Java"],
+        "paper_url": null,
+        "code_url": null
+      },
+      {
+        "id": "summer-2015-starcraft",
+        "title": "The Inner Workings of StarCraft II: Using Statistics to Sharpen the Competitive Edge",
+        "type": "Summer",
+        "year": 2015,
+        "students": ["Bayard Roberts"],
+        "images": {
+          "poster": {
+            "url": "assets/projects/summer/2015-roberts-poster.pdf",
+            "alt": "Laurential Weekend Internship Fellowship Poster"
+          },
+          "presentation": {
+            "url": "assets/projects/summer/2015-roberts-presentation.jpg",
+            "alt": "Laurential Weekend Internship Fellowship Poster Presentations"
+          }
+        },
+        "abstract": "On 11/8/14, Lee \"Life\" Seung Hyun won the Starcraft II 2014 World Championship Series Global Finals, organized by Blizzard Entertainment in California, earning himself $100,000. Life is considered to be one of the best players in the world of Starcraft II, a real-time strategy game that is, both fortunately and necessarily, very competitive. In the e-sports world, Starcraft II tournaments are known for being in the top five for most prize money awarded overall and for being in the top five for having the largest prize pool for a non-team game. Video game design is a complex undertaking, but few would argue that Blizzard, also the developer and publisher of Starcraft II, has succeeded in making the game a fun and enjoyable experience.\nCompared to more casual players, Life and his peers care much less about how fun the game is. Competitiveness and game balance are very important aspects for Blizzard to maintain in their game because many people, over many tournaments and for many rewards, count on it. In this, the company has a sizeable job. It is not enough to create a seemingly balanced game and then let it free into the world. Rather, the game developers for Starcraft II need to constantly watch the gameplay of their game to find game imbalances that they no doubt overlooked. Players have been constantly improving and changing their game strategies ever since the beta release of the game came out in early 2010. Since then, it was inevitable that certain players would be able to find and exploit weaknesses in the game balance, using a strategy that was too powerful, too difficult to properly execute a counter strategy, or even too cost-efficient compared to other strategies. Luckily for the gamers, Blizzard has been up to this tireless job.",
+        "tags": ["Starcraft", "Data Analysis"],
+        "paper_url": null,
+        "code_url": null
+      }
+    ]
+  },
+  "research": {
+    "categories": [
+      {
+        "id": "esports",
+        "name": "Esports Analytics",
+        "description": "This is an ongoing research project with Dr. Ivan Ramler at St. Lawrence University. The research involves capturing and analyzing online game data to discover and reveal different characteristics of competitive online games such as League of Legends and StarCraft II.\n\n**Datasets**\n\n* [League of Legends Team Composition Data](https://zenodo.org/record/582666)\n* [League of Legends Illicit Bot Prevalence Data](https://zenodo.org/record/21708)",
+        "photos": [
+        ]
+      },
+      {
+        "id": "chap",
+        "name": "Credit-based Home Access Point (CHAP)",
+        "description": "Increasing availability of high-speed Internet and wireless access points has allowed home users to connect not only their computers but various other devices to the Internet. Every device running different applications requires unique Quality of Service (QoS). It has been shown that delay-sensitive applications, such as VoIP, remote login and online game sessions, suffer increased latency in the presence of throughput-sensitive applications such as FTP and P2P. Currently, there is no mechanism at the wireless AP to mitigate these effects except explicitly classifying the traffic based on port numbers or host IP addresses. We propose CHAP, a credit-based queue management technique, to eliminate the explicit configuration process and dynamically adjust the priority of all the flows from different devices to match their QoS requirements and wireless conditions to improve application quality in home networks. An analytical model is used to analyze the interaction between flows and credits and resulting queueing delays for packets. CHAP is evaluated using Network Simulator (NS2) under a wide range of conditions against First-In-First-Out (FIFO) and Strict Priority Queue (SPQ) scheduling algorithms. CHAP improves the quality of an online game, a VoIP session, a video streaming session, and a Web browsing activity by 20%, 3%, 93%, and 51%, respectively, compared to FIFO in the presence of an FTP download. CHAP provides these improvements similar to SPQ without an explicit classification of flows and a pre-configured scheduling policy. A Linux implementation of CHAP is used to evaluate its performance in a real residential network against FIFO. CHAP reduces the web response time by up to 85% compared to FIFO in the presence of a bulk file download. Our contributions include an analytic model for the credit-based queue management, simulation, and implementation of CHAP, which provides QoS with minimal configuration at the AP.",
+        "photos": [
+          "assets/research/chap/website-response-time.png",
+          "assets/research/chap/quake4map.png",
+          "assets/research/chap/quake4pings.png"
+        ]
+      },
+      {
+        "id": "traffic",
+        "name": "Online Game Traffic Analysis",
+        "description": "The research involves capturing network traffic of online games, developing traffic models and their validation, and implementing simulation modules and applications. I am currently investigating Overwatch and its high bandwidth mode.",
+        "photos": [
+        ]
+      },
+       {
+        "id": "e2e",
+        "name": "End-to-End Protocol",
+        "description": "The research involves analyzing network protocols and revising them to improve their performance.",
+        "photos": [
+        ]
+      },
+      {
+        "id": "dev",
+        "name": "Software Development & Tools",
+        "description": "**Get Your Own Dataset**\n\nDr. Robin Lock, Dr. Ivan Ramler and I have developed tools to help generate individualized datasets for statistics education.\n\n[Get your own dataset!](http://myslu.stlawu.edu/~clee/dataset/)\n\n**Pebble Smartwatch**\n\nTechnology evolves at a fast pace, introducing new devices and programming languages. Smartphones and smartwatches are examples of popular new devices. These new devices often introduce a new set of challenges for computer scientists. Due to their compact size, smartphones and smartwatches are relatively small, and force us to consider different requirements. Smartphones and smartwatches have a smaller processor, less memory, and a limited power supply (battery). These characteristics force programmers to write more optimized codes in order to take most out of the limited hardware and to conserve energy. In order to keep up with the fast-paced technological trend, I often purchase these devices and learn how to program for them. In 2014, the estimate sales of smartwatches reach 6.8 million units*, and I bought myself a Pebble Time smartwatch to experiment. Pebble is one of the leaders in the smartwatch market, and has sold over one million smartwatches as of early 2015. I developed a watch face called *iClone* for Pebble watches, which received over 400 hearts (likes) from users all around the world. As of mid-August 2016, it is ranked in the top 300 out of over 11,000 watch faces available in the Pebble App Store. The watch face has been downloaded over 4,000 times, and is accessed from over 50 countries around the world. On October 8, 2016, [Pebble Style](https://twitter.com/pebblestyle/) posted a [tweet](https://x.com/pebblestyle/status/784728877704876032) about the watch face. For our local community, I developed a smart watch app called *Saints Athletics* to facilitate following the schedule and results of our sports teams on Pebble watches.\n\n**Correctional Facility Cell Search Scheduler**\n\nOne of the biggest news stories for the North Country in 2015 was the escape of David Sweat and Richard Matt from Clinton Correctional Facility. The New York state launched an extensive investigation and published the findings in the report titled *Investigation of the June 5, 2015 Escape of Inmates David Sweat and Richard Matt from Clinton Correctional Facility*. The report reveals that\n* \"Indeed, within the year preceding the escape, multiple cells were never searched, including Sweat’s cell.\"\n* \"The Inspector General’s investigation revealed that Clinton practice does not ensure that all cells are regularly searched, and that cell searches, when conducted, are hasty and inadequate.\"\n* \"The schedule should ‘ensure that each inmate's cell, cube, or room is randomly searched within a specific timeframe.'\"\nAlthough Clinton Correctional Facility used a computer software to generate search schedules, the officers failed to reinforce them. However, not all correctional facilities utilize computer software for random searches. I collaborated with an officer at Gouverneur Correctional Facility to develop a computer software that generates a random search schedule. The Gouverneur Correctional Facility started using the software in November 2016, and is now able to generate a random schedule much more quickly and minimize human error. The software is also expected to be deployed at Attica Correctional Facility in the near future.",
+        "photos": []
+      },
+      {
+        "id": "thesis",
+        "name": "Graduate Thesis Work",
+        "description": "These are my masters thesis (May 2002) and PhD dissertation (June 2010).",
+        "photos": []
+      },
+      {
+        "id": "tech-report",
+        "name": "Technical Reports",
+        "description": "These are technical reports published at Worcester Polytechnic Instutue while working my graduate degrees.",
+        "photos": []
+      }
+    ],
+    "publications": [
+      {
+        "title": "Investigating Match Performance Differences between Genders of League of Legends Champions",
+        "authors": "Ivan Ramler, Choong-Soo Lee, and Sarah Strong",
+        "venue": "The Foundations of Digital Games",
+        "year": "2021",
+        "category": "esports",
+        "link": "https://dl.acm.org/doi/10.1145/3472538.3472549",
+        "pdf": null
+      },
+      {
+        "title": "Identifying Symbiotic Relationships between Champions in League of Legends",
+        "authors": "Ivan Ramler, Choong-Soo Lee, and Michael Schuckers",
+        "venue": "The Joint Statistical Meetings, Sports Statistics Section",
+        "year": "2019",
+        "category": "esports",
+        "link": null,
+        "pdf": "assets/publications/lol.symbiotic.relationships.jsm.2019.pdf"
+      },
+      {
+        "title": "A Data Science Approach to Exploring Hero Roles in Multiplayer Online Battle Arena Games",
+        "authors": "Choong-Soo Lee and Ivan Ramler",
+        "venue": "Data Analytics Applications in Gaming and Entertainment, Günter Wallner (Ed.)",
+        "year": "2019",
+        "category": "esports",
+        "link": "https://www.autoteles.org/gdabook/",
+        "pdf": null
+      },
+      {
+        "title": "Identifying and Evaluating Successful Non-meta Strategies in League of Legends",
+        "authors": "Choong-Soo Lee and Ivan Ramler",
+        "venue": "The Foundations of Digital Games ",
+        "year": "2017",
+        "category": "esports",
+        "link": null,
+        "pdf": "assets/publications/lol.nonmeta.compositions.fdg17.pdf"
+      },
+      {
+        "title": "Rise of the Bots: Bot Prevalence and Its Impact on Match Outcomes in League of Legends",
+        "authors": "Choong-Soo Lee and Ivan Ramler",
+        "venue": "The 14th International Workshop on Network and Systems Support for Games (NetGames)",
+        "year": "2015",
+        "category": "esports",
+        "link": null,
+        "pdf": "assets/publications/lol.bots.netgames.2015.pdf"
+      },
+      {
+        "title": "Investigating the Impact of Game Features and Content on Champion Usage in League of Legends",
+        "authors": "Choong-Soo Lee and Ivan Ramler",
+        "venue": "The Foundation of Digital Games ",
+        "year": "2015",
+        "category": "esports",
+        "link": null,
+        "pdf": "assets/publications/lol.champion.usage.fdg.2015.pdf"
+      },
+      {
+        "title": "The Revolution of StarCraft Network Traffic",
+        "authors": "Choong-Soo Lee",
+        "venue": "The 11th Annual Workshop on Network and Systems Support for Games",
+        "year": "2012",
+        "category": "traffic",
+        "link": null,
+        "pdf": "assets/publications/starcraft2.netgames.2012.pdf"
+      },
+      {
+        "title": "Implementation and Demonstration of a Credit-based Home Access Point",
+        "authors": "Choong-Soo Lee, Mark Claypool, and Robert Kinicki",
+        "venue": "The ACM Multimedia",
+        "year": "2010",
+        "category": "chap",
+        "link": null,
+        "pdf": "assets/publications/chap.acmmm.2010.pdf"
+      },
+      {
+        "title": "A Credit-based Home Access Point (CHAP) to Improve Application Performance on IEEE 802.11 Networks",
+        "authors": "Choong-Soo Lee, Mark Claypool, and Robert Kinicki",
+        "venue": "The Multimedia Systems (MMSys)",
+        "year": "2010",
+        "category": "chap",
+        "link": null,
+        "pdf": "assets/publications/chap.mmsys.2010.pdf"
+      },
+      {
+        "title": "CHAP – Credit-based Home Access Point for Overall Application QoS Improvement",
+        "authors": "Choong-Soo Lee",
+        "venue": "The Passive and Active Measurement Conference",
+        "year": "2009",
+        "category": "chap",
+        "link": "assets/publications/chap.poster.pam.2009.pdf",
+        "pdf": "assets/publications/chap.pam.2009.pdf"
+      },
+      {
+        "title": "Performance Enhancement of TFRC in Wireless Ad Hoc Networks",
+        "authors": "Mingzhe Li, Choong-Soo Lee, Emmanuel Agu, Mark Claypool, and Robert Kinicki",
+        "venue": "The 10th International Conference on Distributed Multimedia Systems (DMS)",
+        "year": "2004",
+        "category": "e2e",
+        "link": null,
+        "pdf": "assets/publications/tfrc.dms.2004.pdf"
+      },
+      {
+        "title": "Low Delay Marking for TCP in Wireless Ad Hoc Networks",
+        "authors": "Choong-Soo Lee, Emmanuel Agu, Mark Claypool, Robert Kinicki and Mingzhe Li",
+        "venue": "IEEE Workshop on Multihop Wireless Networks (MWN)",
+        "year": "2004",
+        "category": "e2e",
+        "link": null,
+        "pdf": "assets/publications/tcp.mwn.2004.pdf"
+      },
+      {
+        "title": "A Credit-based Home Access Point (CHAP) to Improve Application Quality on IEEE 802.11 Networks",
+        "authors": "Choong-Soo Lee",
+        "venue": "PhD Dissertatio",
+        "year": "2010",
+        "category": "thesis",
+        "link": null,
+        "pdf": "assets/publications/phd.dissertation.pdf"
+      },
+      {
+        "title": "WHITE – Achieving Fair Bandwidth Allocation with Priority Dropping Based on Round Trip Time",
+        "authors": "Choong-Soo Lee",
+        "venue": "Masters Thesis",
+        "year": "2004",
+        "category": "thesis",
+        "link": null,
+        "pdf": "assets/publications/masters.thesis.pdf"
+      },
+      {
+        "title": "Low Delay Marking for TCP in Wireless Ad Hoc Networks",
+        "authors": "Choong-Soo Lee, Emmanuel Agu, Mark Claypool and Robert Kinicki",
+        "venue": "Technical Report WPI-CS-TR-03-34, Computer Science Department, Worcester Polytechnic Institute",
+        "year": "2003",
+        "category": "tech-report",
+        "link": null,
+        "pdf": "ftp://ftp.cs.wpi.edu/pub/techreports/03-34.ps.gz"
+      },
+      {
+        "title": "Enhancing Active Queue Management with Round-trip Time Awareness",
+        "authors": "Choong-Soo Lee, Mark Claypool, and Robert Kinicki",
+        "venue": "Technical Report WPI-CS-TR-03-28, Computer Science Department, Worcester Polytechnic Institute",
+        "year": "2004",
+        "category": "tech-report",
+        "link": null,
+        "pdf": "ftp://ftp.cs.wpi.edu/pub/techreports/03-28.ps.gz"
+      },
+      {
+        "title": "Chablis – Achieving Fair Bandwidth Allocation with Priority Dropping Based on Round Trip Time",
+        "authors": "Choong-Soo Lee, Mark Claypool, and Robert Kinicki",
+        "venue": "Technical Report WPI-CS-TR-02-19, Computer Science Department, Worcester Polytechnic Institute",
+        "year": "2004",
+        "category": "tech-report",
+        "link": null,
+        "pdf": "ftp://ftp.cs.wpi.edu/pub/techreports/02-19.ps.gz"
+      },
+      {
+        "title": "Chardonnay — Achieving Fair Bandwidth Allocation with Priority Dropping Based on Round Trip Time",
+        "authors": "Choong-Soo Lee, Mark Claypool, and Robert Kinicki",
+        "venue": "Technical Report WPI-CS-TR-02-06, Computer Science Department, Worcester Polytechnic Institute",
+        "year": "2002",
+        "category": "tech-report",
+        "link": null,
+        "pdf": null
+      },
+      {
+        "title": "DYOD (Download Your Own Data), ",
+        "authors": "Robin H. Lock, Ivan Ramler, and Choong-Soo Lee",
+        "venue": "Poster Session, USCOTS 2017 Show Me the Data",
+        "year": "2017",
+        "category": "dev",
+        "link": "https://www.causeweb.org/cause/uscots/uscots17/posters/2-10",
+        "pdf": null
+      },
+      {
+        "title": "Web Tools to Help Students Get Individualized Datasets on a Common Theme",
+        "authors": "Robin H. Lock, Ivan Ramler, and Choong-Soo Lee",
+        "venue": "MAA Session on Modern Data Sets for the Intro Statistics Classroom and Beyond, Joint Mathematics Meetings",
+        "year": "2017",
+        "category": "dev",
+        "link": "https://jointmathematicsmeetings.org/amsmtgs/2180_abstracts/1125-k5-2524.pdf",
+        "pdf": null
+      }
+    ]
+  },
+  "personal": [
+    {
+      "category": "Video Games & Competitive Gaming",
+      "description": "Video games have always been a lifelong passion of mine. While I enjoy exploring almost every genre, limited free time means I focus almost exclusively on Heroes of the Storm. I’ve competed in the Nexus Gaming Series (an amateur competitive league) for years and founded the team Gen.M Esports. You can watch archives of my past matches on [YouTube](https://www.youtube.com/playlist?list=PLfKjXENHdJuLZGN1in9OxApVBoTTopAYZ).\n\nI share this passion with many of my students, who are equally enthusiastic about games like StarCraft II, Super Smash Bros. Brawl, and Call of Duty. During my time at Gustavus Adolphus College, I hosted annual StarCraft II tournaments each January (2011–2013) and organized student viewings for BlizzCon in October 2011 and 2012. You can read the coverage of these events in these news articles:\n\n- [Starcraft tournament tests tactics at GAC  (The Free Press)](https://www.mankatofreepress.com/news/local_news/starcraft-tournament-tests-tactics-at-gac/article_36d86304-3256-5f42-b7da-b2b87e59e8db.html)\n* [Starcraft frenzy (Gustavus Weekly)](https://weekly.blog.gustavus.edu/2011/01/21/starcraft-frenzy/)\nAt St. Lawrence University, I worked alongside students to establish the SLU E-Sports Club, hosting student tournaments as well as faculty-versus-student League of Legends events. Today, St. Lawrence University features official varsity esports teams competing in League of Legends, Valorant, Overwatch, Rocket League, Super Smash Bros., and Sim Racing.",
+      "photos": [
+        "https://assets-prd.ignimgs.com/2022/01/28/starcraft-2-heart-of-the-swarm-button-crop-1643355113969.jpg?crop=1%3A1%2Csmart&format=jpg&auto=webp&quality=80",
+        "https://assets-prd.ignimgs.com/2022/01/28/heroes-of-the-storm-button-crop-1643355577739.jpg",
+        "assets/personal/NGS-Banner.png"
+      ]
+    },
+    {
+      "category": "Music",
+      "description": "I listen to all kinds of music, but especially enjoy classical music. It’s probably due to my long-term exposure to classical music that I like the genre the most. My favorite composers include Wolfgang A. Mozart, Ludwig V. Beethoven and Piotr Tchaikovsky. As for the instrument, I love the sound of a violin. In addition to classical music, I listen to musicals, rock, Korean/Japanese/Chinese pop music and some jazz.",
+      "photos": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj-dJSjivVMbVoSA7SFl09fFkBavZu7muCfQStp9HrKQ&s=10",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpxmyybd2GZLEBhjn2DoJijqNh3MSoJp68ybzuqqnWFw&s=10",
+        "https://upload.wikimedia.org/wikipedia/en/0/04/KPop_Demon_Hunters_%28soundtrack%29.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLxLm5rRnGo7DZQxUvIBSaYrEYQrj1zBfL1WWXXo9tPQ&s=10",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA5fmoWSuQurgcMSgRZADTS2Wk9820rJ72C3KErrPXJA&s=10"
+
+      ]
+    }
+  ]
+}

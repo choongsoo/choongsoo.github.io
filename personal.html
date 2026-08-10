@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" /> 
+  <title>Dr. Choong-Soo Lee @ SLU | Personal Interests</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+
+  <header id="site-header"></header>
+
+  <main>
+    <section>
+      <h2>Personal Interests</h2>
+      <div id="personal-interests-list"></div>
+    </section>
+  </main>
+  <footer id="site-footer"></footer>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const data = await loadSiteData("nav-personal");
+      if (!data || !data.personal) return;
+
+      const container = document.getElementById("personal-interests-list");
+      container.innerHTML = data.personal.map(item => {
+        const hasPhotos = item.photos && item.photos.length > 0;
+        return `
+          <div class="interest-card">
+            <div class="interest-title">${item.category}</div>
+            <p class="interest-description">${parseMarkdown(item.description)}</p>
+            ${hasPhotos ? `
+              <div class="personal-gallery">
+                ${item.photos.map(p => `<img src="${p}" alt="${item.category} image">`).join("")}
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }).join("");
+    });
+  </script>
+</body>
+</html>
