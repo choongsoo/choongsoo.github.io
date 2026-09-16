@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Listing Exporter</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 2rem 3rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        h1 {
+            color: #1a253c;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .note {
+            background-color: #fffbe6;
+            border: 1px solid #ffe58f;
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            color: #8a6d3b;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            background-color: white;
+        }
+        input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        }
+        button {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 6px;
+            background-color: #007bff;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #status {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-weight: 500;
+            min-height: 20px;
+        }
+    </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HG7TY74ZK9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HG7TY74ZK9');
+</script>
+
+<body>
+    <div class="container">
+        <h1>Property Listing Exporter 🏠</h1>
+        <form id="propertyForm">
+            <div class="form-group">
+                <label for="zip">Zip Code</label>
+                <input type="text" id="zip" name="zip" placeholder="e.g., 90210" required pattern="\d{5}" title="Please enter a 5-digit zip code.">
+                <p class="note">
+                    Need a zip code?<br>Try the <a href="https://www.usps.com/nationalpremieraccounts/findzipcodes.htm" target="_blank">USPS ZIP Code™ Lookup</a> or <a href="https://www.unitedstateszipcodes.org/" target="_blank">map-based Lookup</a>.
+                </p>
+            </div>
+            <div class="form-group">
+                <label for="apiKey">API Key</label>
+                <input type="text" id="apiKey" name="apiKey" placeholder="Enter your API key" required>
+                <p class="note">
+                    You <strong>NEED</strong> to sign up for the free BASIC subscription at<br><a href="https://rapidapi.com/s.mahmoud97/api/realtor16" target="_blank">https://rapidapi.com/s.mahmoud97/api/realtor16</a>. Once signed up and subscribed, you can find your <strong>X-RapidAPI-Key</strong> <a href="https://rapidapi.com/s.mahmoud97/api/realtor16/playground/apiendpoint_f9bc2522-5c13-436a-a404-e0329495259d" target="_blank">here</a>.
+                </p>
+            </div>
+            <div class="form-group">
+                <label for="limit">Max Number of Listings (up to 200)</label>
+                <input type="number" id="limit" name="limit" value="200" min="1" max="200" required>
+            </div>
+             <div class="form-group">
+                <label for="filename">CSV Filename</label>
+                <input type="text" id="filename" name="filename" value="data.csv" required>
+            </div>
+            <button type="submit" id="submitBtn">Get Property Data</button>
+        </form>
+        <div id="status"></div>
+    </div>
+
+    <script>
+        const propertyForm = document.getElementById('propertyForm');
+        const statusDiv = document.getElementById('status');
+        const submitBtn = document.getElementById('submitBtn');
+        let statusTimeout; 
+
+        function setStatus(message, isError = false) {
+            clearTimeout(statusTimeout);
+            statusDiv.textContent = message;
+            if (!isError && message) {
+                statusTimeout = setTimeout(() => {
+                    statusDiv.textContent = '';
+                }, 8000);
+            }
+        }
+
+        propertyForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            
+            setStatus('Fetching data... ⏳');
+            submitBtn.disabled = true;
+
+            const zipInput = document.getElementById('zip');
+            const apiKeyInput = document.getElementById('apiKey');
+            const limitInput = document.getElementById('limit');
+            const filenameInput = document.getElementById('filename');
+
+            // --- Input Sanity Checks ---
+            const zipRegex = /^\d{5}$/;
+            if (!zipRegex.test(zipInput.value.trim())) {
+                setStatus('Please enter a valid 5-digit zip code. ❌', true);
+                zipInput.focus();
+                submitBtn.disabled = false;
+                return;
+            }
+             if (!apiKeyInput.value.trim()) {
+                setStatus('API Key cannot be empty. ❌', true);
+                apiKeyInput.focus();
+                submitBtn.disabled = false;
+                return;
+            }
+            const limit = parseInt(limitInput.value, 10);
+            if (isNaN(limit) || limit < 1 || limit > 200) {
+                setStatus('Max number of listings must be between 1 and 200. ❌', true);
+                limitInput.focus();
+                submitBtn.disabled = false;
+                return;
+            }
+            let csvFilename = filenameInput.value.trim();
+            if (!csvFilename) {
+                setStatus('CSV Filename cannot be empty. ❌', true);
+                filenameInput.focus();
+                submitBtn.disabled = false;
+                return;
+            }
+            if (!/^[a-zA-Z0-9_\- .]+$/.test(csvFilename)) {
+                setStatus('Filename can only contain letters, numbers, spaces, underscores, periods, and hyphens. ❌', true);
+                filenameInput.focus();
+                submitBtn.disabled = false;
+                return;
+            }
+            if (!csvFilename.toLowerCase().endsWith('.csv')) {
+                csvFilename += '.csv';
+            }
+            
+            const APIurl = `https://realtor16.p.rapidapi.com/search/forsale?location=${zipInput.value.trim()}}&limit=${limit}&search_radius=0`;
+
+            try {
+                
+                const response = await fetch(APIurl, {
+                    headers: {
+                        "x-rapidapi-host": "realtor16.p.rapidapi.com",
+                        "x-rapidapi-key": apiKeyInput.value.trim()
+                    }
+                });
+
+                if (response.status == 403) {
+                        setStatus(`Please sign up and subscribe to get a valid API key.`, true);
+                        return;
+                }
+
+                const jsonData = await response.json();
+                
+
+                if (!jsonData.properties || jsonData.properties.length === 0) {
+                    setStatus('No properties found for the selected criteria. 🤷‍♂️');
+                    submitBtn.disabled = false;
+                    return;
+                }
+
+                const csvData = convertJsonToCsv(jsonData.properties);
+                 if (csvData.split('\n').length <= 1) {
+                    setStatus('Found properties, but none had complete data to export. 🤷‍♂️');
+                    submitBtn.disabled = false;
+                    return;
+                }
+                
+                downloadCsv(csvData, csvFilename);
+                setStatus('Download complete! ✅');
+
+            } catch (error) {
+                console.error('Error fetching or processing data:', error);
+                setStatus(`Unknown error fetching or processing data. Please contact the developer.`, true);
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+        
+        function convertJsonToCsv(propertyListings) {
+            const headers = ['Street Address', 'City', 'State', 'Postal Code', 'Price', 'Beds', 'Baths', 'SqFt', 'Lot Size (Acres)', 'Last Sold Price', 'Last Sold Date'];
+                        
+            const rows = propertyListings.reduce((acc, prop) => {
+                // Extract all required data using optional chaining for safety
+                const price = prop.list_price;
+                const beds = prop.description?.beds;
+                const baths = prop.description?.baths_consolidated;
+                const sqft = prop.description?.sqft;
+                const lot_sqft = prop.description?.lot_sqft;
+                const address = prop.location?.address?.line;
+                const city = prop.location?.address?.city;
+                const state = prop.location?.address?.state_code;
+                const postalCode = prop.location?.address?.postal_code;
+                const soldPrice = prop.description?.sold_price;
+                const soldDate = prop.description?.sold_date;
+
+                // Check if ALL required fields have a value (not null, undefined, etc.)
+                // This ensures we skip listings for land or properties with incomplete data.
+                if (price && beds && baths && sqft && lot_sqft && address && city && state && postalCode) {
+                    // Escape commas within the address field by wrapping in double quotes
+                    const safeAddress = `"${String(address).replace(/"/g, '""')}"`;
+                    const lotInAcres = (lot_sqft / 43560.0);
+
+                    acc.push([
+                        safeAddress,
+                        city,
+                        state,
+                        postalCode,
+                        price,
+                        beds,
+                        baths,
+                        sqft,
+                        lotInAcres,
+                        soldPrice || '', 
+                        soldDate ? soldDate.split('T')[0] : '' 
+                    ].join(','));
+                }
+                
+                return acc;
+            }, []);
+
+            return [headers.join(','), ...rows].join('\n');
+        }
+
+        function downloadCsv(csvData, filename) {
+            const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', filename);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
+

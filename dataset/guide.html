@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser-specific CORS Setup Guide</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 2rem 3rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+        h1, h2, h3 {
+            color: #1a253c;
+            border-bottom: 2px solid #eef2f7;
+            padding-bottom: 0.5rem;
+        }
+        p, li {
+            line-height: 1.6;
+        }
+        code {
+            background-color: #eef2f7;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        .intro {
+            background-color: #e6f7ff;
+            border: 1px solid #91d5ff;
+            border-radius: 6px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .warning {
+            background-color: #fffbe6;
+            border: 1px solid #ffe58f;
+            color: #8a6d3b;
+            padding: 1rem 1.5rem;
+            border-radius: 6px;
+            margin-top: 2rem;
+        }
+        ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 1rem;
+        }
+        strong {
+            color: #0d1a2e;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HG7TY74ZK9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HG7TY74ZK9');
+</script>
+
+<body>
+    <div class="container">
+        <h1>Browser-specific Guide</h1>
+
+        <div class="intro">
+            <p>
+                Your browser's security features (known as CORS) will block the API request. The instructions below explain how to bypass this by using browser-specific extensions or altering settings.
+            </p>
+        </div>
+
+        <h3><img src="https://www.google.com/s2/favicons?domain=google.com" alt="Chrome icon"> Google Chrome</h3>
+        <p>For Chrome, the easiest method is to use a browser extension that disables CORS checks.</p>
+        <ol>
+            <li>
+                <strong>Install CORS Unblock:</strong> Install the <a href="https://chromewebstore.google.com/detail/cors-unblock/hadoojkfknbjgoppkecpgamiajljiief" target="_blank" rel="noopener noreferrer">CORS Unblock</a> extension (or a similar alternative).
+            </li>
+            <li>
+                <strong>Pin the Extension:</strong> Click the puzzle piece icon (Extensions) in your toolbar. Find "CORS Unblock" in the list and click the <strong>pin icon</strong> next to it. This will keep the extension's icon visible in your toolbar for easy access.
+            </li>
+            <li>
+                <strong>Enable the Extension:</strong> Click the newly pinned icon for the "CORS Unblock" extension to activate it. The icon will usually change color to indicate it is active.
+            </li>
+        </ol>
+
+        <h3><img src="https://www.google.com/s2/favicons?domain=firefox.com" alt="Firefox icon"> Mozilla Firefox</h3>
+        <p>Similar to Chrome, you can use an add-on to manage CORS headers in Firefox.</p>
+        <ol>
+            <li>
+                <strong>Install CORS Everywhere:</strong> Install the <a href="https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/" target="_blank" rel="noopener noreferrer">CORS Everywhere</a> add-on.
+            </li>
+            <li>
+                <strong>Pin the Extension:</strong> Right-click the "CORS Everywhere" icon in your toolbar and select <strong>Pin to Toolbar</strong> if it is not already visible.
+            </li>
+             <li>
+                <strong>Activate the Add-on:</strong> After installation, click the icon in your toolbar to toggle the add-on on or off. The icon will turn green to indicate it is active.
+            </li>
+        </ol>
+        
+        <h3><img src="https://www.google.com/s2/favicons?domain=apple.com" alt="Safari icon"> Apple Safari</h3>
+        <p>Safari has a built-in feature for developers that can disable CORS restrictions without needing an extension.</p>
+        <ol>
+            <li>
+                <strong>Enable the Develop Menu:</strong> Open Safari, go to <strong>Safari > Settings</strong> (or Preferences) from the menu bar. Click on the <strong>Advanced</strong> tab and check the box at the bottom that says "Show Develop menu in menu bar."
+            </li>
+            <li>
+                <strong>Disable Cross-Origin Restrictions:</strong> You will now see a new "Develop" menu in the menu bar. Click on it, and then check the option <strong>Disable Cross-Origin Restrictions</strong>.
+            </li>
+            <li>
+                <strong>Keep in Mind:</strong> This setting will reset every time you close Safari, so you will need to re-enable it for each new session.
+            </li>
+        </ol>
+
+        <div class="warning">
+            <h2>Important Security Warning</h2>
+            <p>
+                These methods disable important security features in your browser. They are safe for using the our dataset tools, but you should <strong>always disable these extensions or revert the settings</strong> before browsing the web normally.
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>

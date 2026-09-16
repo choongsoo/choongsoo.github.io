@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autotrader Car Data Exporter</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 2rem 3rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        h1 {
+            color: #1a253c;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .note {
+            background-color: #fffbe6;
+            border: 1px solid #ffe58f;
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            color: #8a6d3b;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        a {
+            color: #007bff;
+        }
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            background-color: white;
+        }
+        select:disabled {
+            background-color: #e9ecef;
+            cursor: not-allowed;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        }
+        button {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 6px;
+            background-color: #007bff;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #status {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-weight: 500;
+            min-height: 20px;
+        }
+    </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HG7TY74ZK9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HG7TY74ZK9');
+</script>
+
+<body>
+    <div class="container">
+        <h1>Autotrader Car Data Exporter 🚗</h1>
+        <p>This generates a CSV dataset of used cars listed at <a href="https://autotrader.com">Autotrader</a>, based on a maker, a model, and a zip code (US only).</p>
+        <p class="note">
+            <strong>Note:</strong> This page requires an extension or a change in the browser settings to work properly. Please refer to this <a href="../guide.html" target="_blank" rel="noopener noreferrer">guide</a>.
+        </p>
+        <form id="carForm">
+            <div class="form-group">
+                <label for="brand">Car Brand</label>
+                <select id="brand" name="brand" required>
+                    <option value="" disabled selected>Select a Brand</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="model">Car Model</label>
+                <select id="model" name="model" required disabled>
+                    <option value="" disabled selected>Please select a brand first</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="zip">Zip Code</label>
+                <input type="text" id="zip" name="zip" placeholder="e.g., 90210" required>
+                <p class="note">
+                    Need a zip code?<br>Try the <a href="https://www.usps.com/nationalpremieraccounts/findzipcodes.htm" target="_blank">USPS ZIP Code™ Lookup</a> or <a href="https://www.unitedstateszipcodes.org/" target="_blank">map-based Lookup</a>.
+                </p>
+            </div>
+            <div class="form-group">
+                <label for="limit">Max Number of Cars (up to 300)</label>
+                <input type="number" id="limit" name="limit" value="300" min="1" max="300" required>
+            </div>
+            <div class="form-group">
+                <label for="csvFilename">CSV Filename</label>
+                <input type="text" id="csvFilename" name="csvFilename" value="data.csv" required>
+            </div>
+            <button type="submit" id="submitBtn">Get Car Data</button>
+        </form>
+        <div id="status"></div>
+
+    </div>
+
+    <script>   
+        const carData = {
+            'BMW': {
+                'id': 'BMW', 
+                'models': {'328i xDrive': '328IXD', 'X1': 'X1', 'X3': 'X3', 'X5': 'X5'}
+            }, 
+            'Buick': {
+                'id': 'BUICK', 
+                'models': {'Enclave': 'ENCLAVE', 'Encore': 'BUIENC', 'LaCrosse': 'LACROSSE', 'Regal': 'REG'}
+            },
+            'Cadillac': {
+                'id': 'CAD', 
+                'models': {'ATS': 'ATS', 'CTS': 'CTS', 'Escalade': 'ESCALA', 'SRX': 'SRX', 'XTS': 'XTS'}
+            }, 
+            'Chevrolet': {
+                'id': 'CHEV', 
+                'models': {'Bolt': 'CHEBOLT', 'Bolt EUV': 'CHEBOLTEUV', 'Camaro': 'CAM', 'Colorado': 'COLORADO', 'Corvette': 'CORV', 'Cruze': 'CRUZE', 'Equinox': 'EQUINOX', 'Impala': 'CHEVIMP', 'Malibu': 'MALI', 'Silverado 1500': 'CHEV150', 'Silverado 2500': 'CHEVC25', 'Suburban': 'CHEVSUB', 'Tahoe': 'TAHOE', 'Traverse': 'TRAVERSE', 'Volt': 'VOLT'}
+            },
+            'Chrysler': {
+                'id': 'CHRY',
+                'models': {'200': 'CHRYS200', '300': '300', 'Pacifica': 'PACIFICA', 'Town & Country': 'TANDC'}
+            },
+            'Dodge': {
+                'id': 'DODGE',
+                'models': {'Challenger': 'CHALLENGER', 'Charger': 'DODCHAR', 'Durango': 'DURANG', 'Grand Caravan': 'GRANDCARAV', 'Journey': 'JOURNEY'}
+            },
+            'Ford': {
+                'id': 'FORD',
+                'models': {'Edge': 'EDGE', 'Escape': 'ESCAPE', 'Explorer': 'EXPLOR', 'F150': 'F150PICKUP', 'F150 Lightning': 'FORF150LIG', 'F250': 'F250', 'F350': 'F350', 'Fiesta': 'FIESTA', 'Focus': 'FOCUS', 'Fusion': 'FUSION', 'Mustang': 'MUST', 'Mustang Mach-E': 'FORDMACHE', 'Taurus': 'TAURUS'}
+            }, 'GMC': {
+                'id': 'GMC',
+                'models': {'Acadia': 'ACADIA', 'Canyon': 'CANYON', 'Sierra 1500': '15SIPU4WD', 'Sierra 2500': 'GMCC25PU', 'Sierra 3500': 'GMC3500PU', 'Terrain': 'TERRAIN', 'Yukon': 'YUKON', 'Yukon XL': 'YUKONXL'}
+            },
+            'Honda': {
+                'id': 'HONDA',
+                'models': {'Accord': 'ACCORD', 'Civic': 'CIVIC', 'CR-V': 'CRV', 'Fit': 'FIT', 'Odyssey': 'ODYSSEY', 'Pilot': 'PILOT', 'Ridgeline': 'RIDGELINE'}
+            },
+            'Hyundai': {
+                'id': 'HYUND',
+                'models': {'Accent': 'ACCENT', 'Elantra': 'ELANTR', 'Ioniq 5': 'HYUIONIQ5', 'Santa Fe': 'SANTAFE', 'Sonata': 'SONATA', 'Tuscon': 'TUCSON'}
+            },
+            'Jeep': {
+                'id': 'JEEP',
+                'models': {'Cherokee': 'CHER', 'Compass': 'COMPASS', 'Grand Cherokee': 'JEEPGRAND', 'Liberty': 'LIBERTY', 'Patriot': 'PATRIOT', 'Renegade': 'JEEPRENEG', 'Wrangler': 'WRNGLER'}
+            },
+            'Kia': {
+                'id': 'KIA',
+                'models': {'EV6': 'KIAEV6', 'Forte': 'FORTE', 'Optima': 'OPTIMA', 'Sorento': 'SORENTO', 'Soul': 'SOUL', 'Sportage': 'SPORTA'}
+            },
+            'Land Rover': {
+                'id': 'ROV',
+                'models': {'Discovery': 'DISCOVERY', 'Discovery Sport': 'ROVDISCSPT', 'Range Rover': 'ROVER', 'Range Rover Sport': 'RANGESPORT'}
+            },
+            'Lexus': {
+                'id': 'LEXUS',
+                'models': {'ES 350': 'ES350', 'GX 460': 'GX460', 'RX 350': 'RX 350'}
+            },
+            'Mazda': {
+                'id': 'MAZDA',
+                'models': {'CX-5': 'CX-5', 'CX-9': 'CX-9', 'Mazda3': 'MAZDA3', 'Mazda6': 'MAZDA6'}
+            },
+            'Mercedes-Benz': {
+                'id': 'MB',
+                'models': {'C 300': 'C300', 'E 300': 'E300', 'GLC 300': 'MBGLC300'}
+            },
+            'Nissan': {
+                'id': 'NISSAN',
+                'models': {'Altima': 'ALTIMA', 'Frontier': 'FRONTI', 'Maxima': 'MAX', 'Leaf': 'LEAF', 'Murano': 'MURANO', 'Pathfinder': 'PATH', 'Rogue': 'ROGUE', 'Sentra': 'SENTRA'}
+            },
+            'Ram': {
+                'id': 'RAM',
+                'models': {'1500': 'RM1500', '2500': 'RM2500', '3500': 'RM3500'}
+            },
+            'Subaru': {
+                'id': 'SUB',
+                'models': {'Forester': 'FOREST', 'Impreza': 'IMPREZ', 'Legacy': 'LEGACY', 'Outback': 'SUBOUTBK'}
+            },
+            'Tesla': {
+                'id': 'TESLA',
+                'models': {'Cybertruck': 'TESCYBERTR', 'Model 3': 'TESMOD3', 'Model S': 'TESMODS', 'Model X': 'TESMODX', 'Model Y': 'TESMODY'}
+            },
+            'Toyota': {
+                'id': 'TOYOTA',
+                'models': {'4Runner': '4RUN', 'Camry': 'CAMRY', 'Corolla': 'COROL', 'Highlander': 'HIGHLANDER', 'Prius': 'PRIUS', 'RAV4': 'RAV4', 'Sienna': 'SIENNA', 'Tacoma': 'TACOMA', 'Tundra': 'TUNDRA'}
+            },
+            'Volkswagen': {
+                'id': 'VOLKS', 'models': {'Golf': 'GOLF', 'ID.4': 'VOLKSID4', 'Jetta': 'JET', 'Passat': 'PASS', 'Tiguan': 'TIGUAN'}
+            }
+        };
+        
+        const carForm = document.getElementById('carForm');
+        const brandSelect = document.getElementById('brand');
+        const modelSelect = document.getElementById('model');
+        const statusDiv = document.getElementById('status');
+        const submitBtn = document.getElementById('submitBtn');
+        const limitValueSpan = document.getElementById('limitValue');
+
+        let statusTimeout; 
+
+        function setStatus(message, isError = false) {
+            clearTimeout(statusTimeout);
+            statusDiv.textContent = message;
+            if (!isError && message) {
+                statusTimeout = setTimeout(() => {
+                    statusDiv.textContent = '';
+                }, 8000);
+            }
+        }
+
+        function populateBrands() {
+            const brands = Object.keys(carData).sort();
+            brands.forEach(brand => {
+                const option = document.createElement('option');
+                option.value = brand;
+                option.textContent = brand;
+                brandSelect.appendChild(option);
+            });
+        }
+
+        function updateModels() {
+            const selectedBrand = brandSelect.value;
+            modelSelect.innerHTML = '';
+            modelSelect.disabled = true;
+
+            if (selectedBrand) {
+                let defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select a Model";
+                defaultOption.disabled = true;
+                defaultOption.selected = true;
+                modelSelect.appendChild(defaultOption);
+
+                const models = Object.keys(carData[selectedBrand]["models"]).sort();
+                models.forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model;
+                    option.textContent = model;
+                    modelSelect.appendChild(option);
+                });
+                modelSelect.disabled = false;
+            } else {
+                let defaultOption = document.createElement('option');
+                defaultOption.textContent = "Please select a brand first";
+                defaultOption.disabled = true;
+                defaultOption.selected = true;
+                modelSelect.appendChild(defaultOption);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', populateBrands);
+        brandSelect.addEventListener('change', updateModels);
+        
+        carForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            
+            statusDiv.textContent = 'Fetching data... ⏳';
+            submitBtn.disabled = true;
+
+            const brand = carData[brandSelect.value]['id'];
+            const model = carData[brandSelect.value]['models'][modelSelect.value];
+            const zip = document.getElementById('zip').value.trim();
+            let limit = document.getElementById('limit').value;
+            const csvFilenameInput = document.getElementById('csvFilename');
+            let csvFilename = csvFilenameInput.value.trim();
+
+            const zipRegex = /^\d{5}$/;
+            if (!zipRegex.test(zip)) {
+                setStatus('Please enter a valid 5-digit zip code. ❌', true);
+                submitBtn.disabled = false;
+                return; 
+            }
+
+            if (isNaN(limit) || limit < 1 || limit > 300) {
+                setStatus('Please enter a number between 1 and 300. ❌', true);
+                submitBtn.disabled = false;
+                return;
+            }
+
+            limit = parseInt(limit) + 50;
+
+            const invalidCharsRegex = /[\\/?%*:|"<>]/;
+            if (csvFilename === '') {
+                setStatus('Please enter a filename for the CSV. ❌', true);
+                submitBtn.disabled = false;
+                return;
+            }
+            if (invalidCharsRegex.test(csvFilename)) {
+                setStatus('Filename contains invalid characters (\ / ? % * : | " < >). ❌', true);
+                submitBtn.disabled = false;
+                return;
+            }
+            
+            if (!csvFilename.toLowerCase().endsWith('.csv')) {
+                csvFilename += '.csv';
+            }
+
+            const APIurl = `https://www.autotrader.com/rest/lsc/listing?searchRadius=100&zip=${zip}&allListingType=used&makeCode=${brand}&modelCode=${model}&channel=ATC&includeSuggested=true&numRecords=${limit}`;
+
+            try {
+                const response = await fetch(APIurl);
+                const jsonData = await response.json();
+                
+                if (!jsonData.listings || jsonData.listings.length === 0) {
+                    statusDiv.textContent = 'No cars found for the selected criteria. 🤷‍♂️';
+                    return;
+                }
+
+                shuffleArray(jsonData.listings);
+                const csvData = convertJsonToCsv(jsonData.listings);
+                downloadCsv(csvData, csvFilename);
+                setStatus(`${csvData.split(/\r?\n/).length - 1} cars found! Download complete! ✅`);
+
+            } catch (error) {
+                console.error('Error fetching or processing data:', error);
+                statusDiv.innerHTML = `Please follow the <a href="../guide.html">guide</a> to install the necessary extension or to change the browser setting.`;
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+        
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                const temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+        }
+
+        function convertJsonToCsv(carListings) {
+            const headers = ['year', 'mileage', 'price'];
+            
+            const limit = document.getElementById('limit').value;
+
+            let rows = carListings.reduce((acc, car) => {
+                const year = car.year;
+                const mileage = car.mileage && car.mileage.value;
+                const price = car.pricingDetail && car.pricingDetail.salePrice;
+
+                if (year && mileage && price) {
+                    const numericMileage = parseFloat(String(mileage).replace(/,/g, ''));
+                    const numericPrice = parseFloat(price);
+
+                    if (!isNaN(numericMileage) && !isNaN(numericPrice)) {
+                        const mileageInK = (numericMileage / 1000);
+                        const priceInK = (numericPrice / 1000);
+                        acc.push([year, mileageInK, priceInK].join(','));
+                    }
+                }
+                
+                return acc;
+            }, []); 
+
+            rows.length = Math.min(parseInt(limit), rows.length);
+
+            return [headers.join(','), ...rows].join('\n');
+        }
+
+        function downloadCsv(csvData, filename) {
+            const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', filename);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

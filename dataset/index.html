@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get your own dataset!</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 25px 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        header h1 {
+            color: #2c3e50;
+            margin: 0;
+        }
+        main {
+            padding: 25px 20px;
+        }
+        .tools-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .tool-link {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex: 1;
+        }
+
+        .tool-section {
+            flex: 1; 
+            padding: 20px 25px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .tool-icon {
+            margin-right: 12px;
+            font-size: 1.4em;
+        }
+
+        .tool-note {
+            font-size: 13px;
+            color: #555;
+            background-color: #e9e9e9;
+            border-left: 3px solid #3498db;
+            padding: 8px 12px;
+            margin-top: 15px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .tool-link:hover .tool-section {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+        }
+
+        @media (max-width: 768px) {
+            .tools-container {
+                flex-direction: column;
+            }
+        }
+        
+        .tool-section h2 {
+            color: #34495e;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .references, .contact {
+            padding: 20px;
+            font-size: 14px;
+        }
+        .references {
+            text-align: left;
+        }
+        .contact, h3 {
+            text-align: center;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #e0e0e0;
+            margin: 0;
+        }
+        .references ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .references li {
+            margin-bottom: 10px;
+        }
+        .references li a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .references li a:hover {
+            text-decoration: underline;
+        }
+        .contact a {
+            color: #3498db;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HG7TY74ZK9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HG7TY74ZK9');
+</script>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>📊 Get your own dataset!</h1>
+        </header>
+
+        <main>
+            <div class="tools-container">
+                <a href="http://shiny.stlawu.edu:3838/TVSeries/" class="tool-link">
+                    <div class="tool-section">
+                        <h2><span class="tool-icon">🎬</span> IMDb TV Series</h2>
+                        <p>Explore over 5000 TV series data from IMDb.com, including episode ratings (by season) and number of raters.</p>
+                        <p class="tool-note"><strong>Note:</strong> It might take a short time for the page to fully load.</p>
+                    </div>
+                </a>
+
+                <a href="autotrade.html" class="tool-link">
+                    <div class="tool-section">
+                        <h2><span class="tool-icon">🚗</span> Autotrader Car Data Exporter</h2>
+                        <p>Explore used car data, including listing price, , mileage, and model year directly on Autotrader.com.</p>
+                    </div>
+                </a>
+
+                <a href="realtor.html" class="tool-link">
+                    <div class="tool-section">
+                        <h2><span class="tool-icon">🏠</span> Property Listing Exporter (beta)</h2>
+                        <p>Explore real estate data, including number of bedrooms and bathrooms, size, and listing price.</p>
+                    </div>
+                </a>
+            </div>
+        </main>
+        <hr>
+        <div class="references">
+            <h3>Academic References</h3>
+            <ul>
+                <li>Robin H. Lock, Ivan Ramler, and Choong-Soo Lee. <a href="https://www.causeweb.org/cause/uscots/uscots17/posters/2-10">DYOD (Download Your Own Data)</a>, Poster Session, USCOTS 2017 Show Me the Data State College, PA, USA, May, 2017. [<a href="/assets/publications/DYODPosterUSCOTS2017.pdf">PDF</a>]</li>
+                <li>Robin H. Lock, Ivan Ramler, and Choong-Soo Lee. <a href="http://jointmathematicsmeetings.org/amsmtgs/2180_abstracts/1125-k5-2524.pdf">Web Tools to Help Students Get Individualized Datasets on a Common Theme</a>, MAA Session on Modern Data Sets for the Intro Statistics Classroom and Beyond, 2017 Joint Mathematics Meetings, Atlanta, GA, USA, January, 2017.</li>
+            </ul>
+        </div>
+        <hr>
+        <footer class="contact">
+            <p>For questions or custom dataset requests, please contact us at:</p>
+            <p>Robin Lock (rlock [at] stlawu [dot] edu) and Choong-Soo Lee (clee [at] stlawu [dot] edu)</p>
+        </footer>
+    </div>
+
+</body>
+</html>
