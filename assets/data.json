@@ -42,7 +42,7 @@
       {
         "code": "CS 370",
         "title": "Operating Systems & Security",
-        "terms_taught": ["Fall 2026"],
+        "terms_taught": ["Fall 2025"],
         "description": "An overview of operating system principles and security considerations. Topics include process scheduling, isolation, and synchronization; memory management including virtual memory; file system interfaces and implementations; access control; and virtualization and containerization."
       },
       {
