@@ -1,3 +1,8 @@
+// Number of projects displayed per page (adjust as needed)
+const ITEMS_PER_PAGE = 6;
+let currentPage = 1;
+let currentFiltered = [];
+
 document.addEventListener("DOMContentLoaded", async () => {
   const data = await loadSiteData("nav-student-research");
 
@@ -27,6 +32,34 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (t === "sye") return 2;
     if (t === "summer") return 1;
     return 3;
+  }
+
+  function displayCurrentPage(options = { scroll: false }) {
+    const totalItems = currentFiltered.length;
+    const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+
+    if (currentPage > totalPages && totalPages > 0) {
+      currentPage = 1;
+    }
+
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const pageItems = currentFiltered.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+    renderProjects(pageItems, totalItems);
+
+    renderPagination(["student-pagination"], {
+      currentPage,
+      totalItems,
+      itemsPerPage: ITEMS_PER_PAGE,
+      onPageChange: (newPage) => {
+        currentPage = newPage;
+        displayCurrentPage({ scroll: true });
+      }
+    });
+
+    if (options.scroll) {
+      scrollToTarget("student-research-list");
+    }
   }
 
   function filterSortAndRender() {
@@ -75,7 +108,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       return 0;
     });
 
-    renderProjects(filtered);
+    currentFiltered = filtered;
+    currentPage = 1; // Reset to page 1 on filter/search change
+    displayCurrentPage({ scroll: false });
   }
 
   if (searchInput) searchInput.addEventListener("input", filterSortAndRender);
@@ -109,11 +144,11 @@ function populateTagFilter(projects, tagSelectEl) {
   `;
 }
 
-function renderProjects(projects) {
+function renderProjects(projects, totalCount) {
   const container = document.getElementById("student-research-list");
   if (!container) return;
 
-  if (projects.length === 0) {
+  if (totalCount === 0) {
     container.innerHTML = `
       <div class="no-results">
         <p>No student research projects match your criteria.</p>

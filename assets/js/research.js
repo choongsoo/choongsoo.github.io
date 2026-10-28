@@ -1,3 +1,8 @@
+// Number of publications displayed per page (adjust as needed)
+const ITEMS_PER_PAGE = 6;
+let currentPage = 1;
+let currentPubs = [];
+
 document.addEventListener("DOMContentLoaded", async () => {
   const data = await loadSiteData("nav-research");
   if (!data || !data.research) return;
@@ -32,6 +37,55 @@ function setupResearchPage(researchData) {
     tabsContainer.appendChild(btn);
   });
 
+  function displayCurrentPage(options = { scroll: false }) {
+    const totalItems = currentPubs.length;
+    const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+
+    if (currentPage > totalPages && totalPages > 0) {
+      currentPage = 1;
+    }
+
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const pagePubs = currentPubs.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+    pubList.innerHTML = pagePubs
+      .map(
+        (p) => `
+      <div class="item-card">
+        <div class="item-title">${p.title}</div>
+        <div class="meta">${p.authors} — <em>${p.venue}</em> (${p.year})</div>
+        <div style="margin-top: 0.4rem;">
+          ${
+            p.link
+              ? `<a href="${p.link}" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; font-size: 0.85rem; margin-right: 1rem;">[Learn More]</a>`
+              : ""
+          }
+          ${
+            p.pdf
+              ? `<a href="${p.pdf}" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; font-size: 0.85rem;">[Paper/Poster]</a>`
+              : ""
+          }
+        </div>
+      </div>
+    `
+      )
+      .join("");
+
+    renderPagination(["research-pagination"], {
+      currentPage,
+      totalItems,
+      itemsPerPage: ITEMS_PER_PAGE,
+      onPageChange: (newPage) => {
+        currentPage = newPage;
+        displayCurrentPage({ scroll: true });
+      }
+    });
+
+    if (options.scroll) {
+      scrollToTarget("publications-list");
+    }
+  }
+
   function updateView(selectedCat) {
     if (selectedCat === "all") {
       overviewContainer.innerHTML = `
@@ -65,33 +119,13 @@ function setupResearchPage(researchData) {
       }
     }
 
-    let pubs = sortedPublications;
-    if (selectedCat !== "all") {
-      pubs = pubs.filter((p) => p.category === selectedCat);
-    }
+    currentPubs =
+      selectedCat === "all"
+        ? sortedPublications
+        : sortedPublications.filter((p) => p.category === selectedCat);
 
-    pubList.innerHTML = pubs
-      .map(
-        (p) => `
-      <div class="item-card">
-        <div class="item-title">${p.title}</div>
-        <div class="meta">${p.authors} — <em>${p.venue}</em> (${p.year})</div>
-        <div style="margin-top: 0.4rem;">
-          ${
-            p.link
-              ? `<a href="${p.link}" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; font-size: 0.85rem; margin-right: 1rem;">[Learn More]</a>`
-              : ""
-          }
-          ${
-            p.pdf
-              ? `<a href="${p.pdf}" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; font-size: 0.85rem;">[Paper/Poster]</a>`
-              : ""
-          }
-        </div>
-      </div>
-    `
-      )
-      .join("");
+    currentPage = 1; // Reset to page 1 on category tab switch
+    displayCurrentPage({ scroll: false });
   }
 
   tabsContainer.addEventListener("click", (e) => {

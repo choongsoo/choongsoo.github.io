@@ -226,3 +226,118 @@ function closeLightbox() {
     document.body.style.overflow = ""; // Restore background scroll
   }
 }
+
+/**
+ * Renders pagination controls into one or more container elements.
+ * Automatically hides navigation when totalPages <= 1.
+ *
+ * @param {Array<string|HTMLElement>} containers - IDs or DOM elements (e.g. top and bottom)
+ * @param {Object} options
+ * @param {number} options.currentPage - 1-based active page index
+ * @param {number} options.totalItems - Total item count
+ * @param {number} options.itemsPerPage - Number of items shown per page
+ * @param {Function} options.onPageChange - Callback invoked with (newPageNumber)
+ */
+function renderPagination(containers, { currentPage, totalItems, itemsPerPage, onPageChange }) {
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const containerEls = containers
+    .map((c) => (typeof c === "string" ? document.getElementById(c) : c))
+    .filter(Boolean);
+
+  if (totalPages <= 1) {
+    containerEls.forEach((el) => {
+      el.innerHTML = "";
+      el.style.display = "none";
+    });
+    return;
+  }
+
+  // Calculate page number list with ellipsis for large page counts
+  const pageNumbers = [];
+  if (totalPages <= 7) {
+    for (let i = 1; i <= totalPages; i++) pageNumbers.push(i);
+  } else {
+    pageNumbers.push(1);
+    if (currentPage > 3) pageNumbers.push("...");
+
+    const start = Math.max(2, currentPage - 1);
+    const end = Math.min(totalPages - 1, currentPage + 1);
+    for (let i = start; i <= end; i++) pageNumbers.push(i);
+
+    if (currentPage < totalPages - 2) pageNumbers.push("...");
+    pageNumbers.push(totalPages);
+  }
+
+  const prevDisabled = currentPage <= 1 ? "disabled" : "";
+  const nextDisabled = currentPage >= totalPages ? "disabled" : "";
+
+  const pageButtonsHtml = pageNumbers
+    .map((num) => {
+      if (num === "...") {
+        return `<span class="page-ellipsis">&hellip;</span>`;
+      }
+      const isActive = num === currentPage;
+      return `
+        <button 
+          type="button" 
+          class="page-btn page-num ${isActive ? "active" : ""}" 
+          data-page="${num}" 
+          ${isActive ? 'aria-current="page"' : ""} 
+          aria-label="Go to page ${num}">
+          ${num}
+        </button>
+      `;
+    })
+    .join("");
+
+  const paginationMarkup = `
+    <nav class="pagination-nav" aria-label="Page navigation">
+      <button 
+        type="button" 
+        class="page-btn page-prev" 
+        ${prevDisabled} 
+        data-page="${currentPage - 1}" 
+        aria-label="Previous page">
+        &laquo; Prev
+      </button>
+      <div class="page-numbers">
+        ${pageButtonsHtml}
+      </div>
+      <button 
+        type="button" 
+        class="page-btn page-next" 
+        ${nextDisabled} 
+        data-page="${currentPage + 1}" 
+        aria-label="Next page">
+        Next &raquo;
+      </button>
+    </nav>
+  `;
+
+  containerEls.forEach((el) => {
+    el.innerHTML = paginationMarkup;
+    el.style.display = "flex";
+
+    // Bind event handler via delegation
+    el.onclick = (e) => {
+      const btn = e.target.closest(".page-btn");
+      if (!btn || btn.hasAttribute("disabled") || btn.classList.contains("disabled")) return;
+      const targetPage = parseInt(btn.dataset.page, 10);
+      if (targetPage && targetPage !== currentPage && targetPage >= 1 && targetPage <= totalPages) {
+        onPageChange(targetPage);
+      }
+    };
+  });
+}
+
+/**
+ * Smoothly scrolls the window to an element, accounting for the sticky header.
+ */
+function scrollToTarget(targetId) {
+  const el = document.getElementById(targetId);
+  if (el) {
+    const yOffset = -90; // offset for sticky header
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+  }
+}
