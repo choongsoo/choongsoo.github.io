@@ -4,13 +4,16 @@
   --slu-scarlet: #AA182C;
   --slu-brown: #653A2B;
   --slu-tan: #D5BA8C;
+  --slu-tan-dark: #D3C7AB;
   --slu-white: #FFFFFF;
-  
+
   /* Complementary Palette */
   --slu-warm-gray: #827871;
   --slu-lt-warm-gray: #B3ADA6;
   --bg-light: #F8FAFC;
-  
+  --bg-card-warm: #FBF9F5;
+  --bg-card-alt: #F9F8F5;
+
   /* Functional Mapping */
   --primary: var(--slu-brown);
   --accent: var(--slu-scarlet);
@@ -18,7 +21,13 @@
   --card-bg: var(--slu-white);
   --text: #333333;
   --text-dark: var(--slu-brown);
+  --text-muted: #666666;
   --border: #E2E8F0;
+  --border-light: #E0E0E0;
+
+  /* Typography */
+  --font-serif: "Garamond", "Times New Roman", serif;
+  --font-sans: "Avenir", "Verdana", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 * { 
@@ -28,16 +37,15 @@
 }
 
 body {
-  /* Preferred Fallback Typography per SLU Brand Guide Page 19 */
-  font-family: "Avenir", "Verdana", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-sans);
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
 }
 
-/* Headings use Academic Serif Fallback (Requiem Alternate) */
+/* Headings */
 h1, h2, h3 {
-  font-family: "Garamond", "Times New Roman", serif;
+  font-family: var(--font-serif);
   color: var(--text-dark);
   font-weight: 700;
 }
@@ -60,6 +68,24 @@ header {
   align-items: center;
   padding: 0.85rem 1.25rem;
   gap: 1rem;
+}
+
+.header-brand {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.brand-name {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--slu-brown);
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.header-brand:hover .brand-name {
+  color: var(--slu-scarlet);
 }
 
 .nav-links {
@@ -115,6 +141,34 @@ header {
   transform: translateY(-1px);
 }
 
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .nav-links {
+    justify-content: center;
+    gap: 1.25rem;
+    width: 100%;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0;
+  }
+
+  .contact-actions {
+    width: 100%;
+  }
+
+  .contact-actions .btn {
+    flex: 1;
+    text-align: center;
+  }
+}
+
 /* Containers and Content Sections */
 main {
   max-width: 1100px;
@@ -140,6 +194,12 @@ h2 {
   color: var(--slu-brown);
 }
 
+.section-subtitle {
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+}
+
 .item-card {
   padding: 1rem 0;
   border-bottom: 1px solid var(--border);
@@ -150,7 +210,7 @@ h2 {
 }
 
 .item-title {
-  font-family: "Garamond", "Times New Roman", serif;
+  font-family: var(--font-serif);
   font-weight: 700;
   color: var(--slu-brown);
   font-size: 1.15rem;
@@ -162,7 +222,7 @@ h2 {
   margin-top: 0.25rem;
 }
 
-.badge {
+.badge, .type-badge {
   display: inline-block;
   background: var(--slu-scarlet);
   color: var(--slu-white);
@@ -185,28 +245,35 @@ h2 {
   margin-top: 0.4rem;
 }
 
-/* Responsive Rules */
-@media (max-width: 768px) {
-  .nav-container {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.75rem;
-  }
+/* Profile Section (About Page) */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 2rem;
+  align-items: start;
+}
 
-  .nav-links {
-    justify-content: space-between;
-    width: 100%;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 0.5rem;
-  }
+.profile-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
 
-  .contact-actions {
-    width: 100%;
-  }
+.profile-name {
+  color: var(--text-dark);
+  font-size: 2rem;
+}
 
-  .contact-actions .btn {
-    flex: 1;
-    text-align: center;
+.profile-title {
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -221,7 +288,7 @@ h2 {
 }
 
 .interest-title {
-  font-family: "Garamond", "Times New Roman", serif;
+  font-family: var(--font-serif);
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--slu-brown);
@@ -255,88 +322,6 @@ h2 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-/* Header Name Styling */
-.header-brand {
-  text-decoration: none;
-  display: inline-block;
-}
-
-.brand-name {
-  font-family: "Garamond", "Times New Roman", serif; /* Serif fallback for SLU Requiem font */
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--slu-brown); /* Core SLU Brown #653A2B */
-  transition: color 0.2s ease;
-  white-space: nowrap;
-}
-
-.header-brand:hover .brand-name {
-  color: var(--slu-scarlet); /* Core SLU Scarlet #AA182C on hover */
-}
-
-/* Mobile Responsive Adjustments */
-@media (max-width: 768px) {
-  .nav-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0.75rem;
-  }
-
-  .nav-links {
-    justify-content: center;
-    gap: 1.25rem;
-    width: 100%;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 0.5rem 0;
-  }
-}
-
-/* ==========================================================================
-   Footer Styles
-   ========================================================================== */
-footer {
-  margin-top: 3rem;
-  border-top: 1px solid var(--border);
-  background-color: #FBF9F5;
-  padding: 1.5rem 1rem;
-  font-size: 0.85rem;
-  color: var(--slu-warm-gray);
-  text-align: center;
-}
-
-.footer-container {
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  align-items: center;
-  justify-content: center;
-}
-
-.footer-container p {
-  margin: 0;
-  line-height: 1.4;
-}
-
-.footer-container .copyright {
-  font-weight: 600;
-  color: var(--slu-brown);
-}
-
-.footer-container .credits {
-  font-size: 0.8rem;
-  color: #666666;
-  font-style: italic;
-}
-
-@media (max-width: 600px) {
-  footer {
-    padding: 1.25rem 0.75rem;
-  }
-}
 
 /* Compact Markdown Bullet Lists */
 #teaching-intro ul,
@@ -349,18 +334,28 @@ footer {
 #teaching-intro li,
 #research-intro li,
 .project-abstract li {
-  margin-bottom: 0.15rem; /* Reduced vertical gap between items */
-  line-height: 1.35;       /* Slightly tighter line height */
+  margin-bottom: 0.15rem;
+  line-height: 1.35;
   font-size: 0.95rem;
 }
 
-/* Eliminate extra browser paragraph margins inside list items */
 #teaching-intro li p,
 #research-intro li p,
 .project-abstract li p {
   margin: 0;
 }
 
+/* Zoomable Media */
+.zoomable {
+  cursor: zoom-in;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.zoomable:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  border-color: var(--slu-scarlet);
+}
 
 /* Lightbox Modal */
 .lightbox-modal {
@@ -413,7 +408,7 @@ footer {
   right: -10px;
   background: transparent;
   border: none;
-  color: #FFFFFF;
+  color: var(--slu-white);
   font-size: 2.5rem;
   line-height: 1;
   cursor: pointer;
@@ -424,4 +419,47 @@ footer {
 .lightbox-close:hover {
   opacity: 0.8;
   color: var(--slu-tan);
+}
+
+/* Footer Styles */
+footer {
+  margin-top: 3rem;
+  border-top: 1px solid var(--border);
+  background-color: var(--bg-card-warm);
+  padding: 1.5rem 1rem;
+  font-size: 0.85rem;
+  color: var(--slu-warm-gray);
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-container p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.footer-container .copyright {
+  font-weight: 600;
+  color: var(--slu-brown);
+}
+
+.footer-container .credits {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  footer {
+    padding: 1.25rem 0.75rem;
+  }
 }

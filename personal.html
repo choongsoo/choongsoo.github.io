@@ -7,15 +7,6 @@
   <title>Dr. Choong-Soo Lee @ SLU | Personal Interests</title>
   <link rel="stylesheet" href="assets/css/main.css" />
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SQYJCSM6S8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-SQYJCSM6S8');
-</script>
 <body>
 
   <header id="site-header"></header>
@@ -26,6 +17,7 @@
       <div id="personal-interests-list"></div>
     </section>
   </main>
+
   <footer id="site-footer"></footer>
   <script src="assets/js/main.js"></script>
   <script>
@@ -39,10 +31,10 @@
         return `
           <div class="interest-card">
             <div class="interest-title">${item.category}</div>
-            <p class="interest-description">${parseMarkdown(item.description)}</p>
+            <div class="interest-description">${parseMarkdown(item.description)}</div>
             ${hasPhotos ? `
               <div class="personal-gallery">
-                ${item.photos.map(p => `<img src="${p}" alt="${item.category} image">`).join("")}
+                ${item.photos.map(p => `<img src="${p}" class="zoomable" data-zoom-src="${p}" alt="${item.category} image">`).join("")}
               </div>
             ` : ''}
           </div>

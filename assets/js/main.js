@@ -1,74 +1,97 @@
 // Global data store accessible across scripts
 let siteData = null;
 
-async function loadHeader(activePageId) {
+const GA_TRACKING_ID = "G-SQYJCSM6S8";
+
+/**
+ * Dynamically initializes Google Analytics to prevent code duplication across HTML pages.
+ */
+function initGoogleAnalytics(id = GA_TRACKING_ID) {
+  if (!id || window.__ga_initialized) return;
+  window.__ga_initialized = true;
+
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    window.dataLayer.push(arguments);
+  }
+  window.gtag = gtag;
+  gtag("js", new Date());
+  gtag("config", id);
+}
+
+// Automatically initialize analytics
+initGoogleAnalytics();
+
+/**
+ * Loads header, footer, and site data concurrently using Promise.all
+ * to minimize network latency and promote reusable site initialization.
+ */
+async function loadSiteData(activeNavId) {
   try {
-    const res = await fetch("header.html");
-    const headerHtml = await res.text();
+    const [headerRes, footerRes, dataRes] = await Promise.all([
+      fetch("header.html"),
+      fetch("footer.html"),
+      fetch("assets/data.json")
+    ]);
+
+    const [headerHtml, footerHtml, data] = await Promise.all([
+      headerRes.text(),
+      footerRes.text(),
+      dataRes.json()
+    ]);
+
+    siteData = data;
+
+    // Inject and configure Header
     const headerEl = document.getElementById("site-header");
     if (headerEl) {
       headerEl.innerHTML = headerHtml;
-
-      // Set active link class based on current page
-      if (activePageId) {
-        const activeLink = document.getElementById(activePageId);
+      if (activeNavId) {
+        const activeLink = document.getElementById(activeNavId);
         if (activeLink) activeLink.classList.add("active");
       }
+      const headerNameEl = document.getElementById("header-name");
+      if (headerNameEl && data?.profile?.name) {
+        headerNameEl.innerText = data.profile.name;
+      }
+      if (data?.profile?.contact) {
+        setupAntiBotContacts(data.profile.contact);
+      }
     }
-  } catch (err) {
-    console.error("Failed to load header component:", err);
-  }
-}
 
-async function loadFooter() {
-  try {
-    const res = await fetch("footer.html");
-    const footerHtml = await res.text();
+    // Inject and configure Footer
     const footerEl = document.getElementById("site-footer");
     if (footerEl) {
       footerEl.innerHTML = footerHtml;
-      
-      // Dynamic current year setting
       const yearEl = document.getElementById("copyright-year");
       if (yearEl) {
         yearEl.innerText = new Date().getFullYear();
       }
     }
-  } catch (err) {
-    console.error("Failed to load footer component:", err);
-  }
-}
 
-// Update loadSiteData to load both Header and Footer
-async function loadSiteData(activeNavId) {
-  await loadHeader(activeNavId);
-  await loadFooter();
-  
-  try {
-    const res = await fetch("assets/data.json");
-    siteData = await res.json();
-    
-    // Update header name dynamically if present in data.json
-    const headerNameEl = document.getElementById("header-name");
-    if (headerNameEl && siteData.profile && siteData.profile.name) {
-      headerNameEl.innerText = siteData.profile.name;
-    }
+    // Initialize global Lightbox for zoomable images
+    setupLightbox();
 
-    setupAntiBotContacts(siteData.profile.contact);
     return siteData;
   } catch (err) {
     console.error("Error loading site data:", err);
   }
 }
 
-// Anti-bot link protection
+/**
+ * Anti-bot link protection: reconstructs emails and decodes URLs upon click.
+ */
 function setupAntiBotContacts(contact) {
   const emailBtn = document.getElementById("email-btn");
   const apptBtn = document.getElementById("appt-btn");
 
   if (emailBtn) {
     emailBtn.addEventListener("click", () => {
-      // Reconstruct email dynamically on user action
       const addr = `${contact.email_user}@${contact.email_domain}`;
       window.location.href = `mailto:${addr}`;
     });
@@ -76,11 +99,18 @@ function setupAntiBotContacts(contact) {
 
   if (apptBtn) {
     apptBtn.addEventListener("click", () => {
-      // Decode base64 URL on user action
       const url = atob(contact.appointment_url_b64);
       window.open(url, "_blank", "noopener,noreferrer");
     });
   }
+}
+
+/**
+ * Helper to generate consistent action link buttons across views.
+ */
+function createLinkButton(url, label, extraClass = "") {
+  const cls = extraClass ? `btn-link ${extraClass}` : "btn-link";
+  return `<a href="${url}" class="${cls}" target="_blank" rel="noopener">${label}</a>`;
 }
 
 /**
@@ -90,7 +120,7 @@ function setupAntiBotContacts(contact) {
  * - Italics: *text* or _text_
  * - Links: [Label](https://url)
  * - Bullet lists: Lines starting with "- " or "* "
- * - Newlines: Double line breaks convert to paragraphs, single to <br>
+ * - Newlines: Double line breaks convert to paragraphs
  */
 function parseMarkdown(text) {
   if (!text) return "";
@@ -136,14 +166,50 @@ function parseMarkdown(text) {
     formattedLines.push("</ul>");
   }
 
-  // 6. Paragraphs and Line Breaks
+  // 6. Paragraphs
   return formattedLines
     .join("\n")
     .replace(/\n\n+/g, "</p><p>");
-//    .replace(/\n/g, "<br>");
+}
+
+/**
+ * Global Poster / Image Lightbox Modal Handler
+ */
+function setupLightbox() {
+  if (document.getElementById("poster-lightbox")) return;
+
+  const modal = document.createElement("div");
+  modal.id = "poster-lightbox";
+  modal.className = "lightbox-modal";
+  modal.innerHTML = `
+    <div class="lightbox-overlay"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" aria-label="Close modal">&times;</button>
+      <img id="lightbox-img" src="" alt="Zoomed view" />
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  modal.querySelector(".lightbox-overlay").addEventListener("click", closeLightbox);
+  modal.querySelector(".lightbox-close").addEventListener("click", closeLightbox);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLightbox();
+  });
+
+  // Delegated click event for zoomable media
+  document.addEventListener("click", (e) => {
+    const target = e.target.closest(".zoomable");
+    if (target) {
+      const zoomSrc = target.getAttribute("data-zoom-src") || target.getAttribute("src");
+      if (zoomSrc) {
+        openLightbox(zoomSrc);
+      }
+    }
+  });
 }
 
 function openLightbox(src) {
+  setupLightbox();
   const modal = document.getElementById("poster-lightbox");
   const img = document.getElementById("lightbox-img");
   if (modal && img) {

@@ -4,110 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autotrader Car Data Exporter</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f4f7f9;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 1rem;
-        }
-        .container {
-            background-color: #ffffff;
-            padding: 2rem 3rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 500px;
-        }
-        h1 {
-            color: #1a253c;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-        .note {
-            background-color: #fffbe6;
-            border: 1px solid #ffe58f;
-            border-radius: 6px;
-            padding: 0.75rem 1rem;
-            font-size: 0.9rem;
-            color: #8a6d3b;
-            text-align: left;
-            margin-bottom: 1.5rem;
-        }
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        a {
-            color: #007bff;
-        }
-        input, select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 1rem;
-            background-color: white;
-        }
-        select:disabled {
-            background-color: #e9ecef;
-            cursor: not-allowed;
-        }
-        input:focus, select:focus {
-            outline: none;
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
-        }
-        button {
-            width: 100%;
-            padding: 0.8rem;
-            border: none;
-            border-radius: 6px;
-            background-color: #007bff;
-            color: white;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        #status {
-            text-align: center;
-            margin-top: 1.5rem;
-            font-weight: 500;
-            min-height: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="dataset.css">
 </head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HG7TY74ZK9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-HG7TY74ZK9');
-</script>
-
 <body>
     <div class="container">
         <h1>Autotrader Car Data Exporter 🚗</h1>
         <p>This generates a CSV dataset of used cars listed at <a href="https://autotrader.com">Autotrader</a>, based on a maker, a model, and a zip code (US only).</p>
         <p class="note">
-            <strong>Note:</strong> This page requires an extension or a change in the browser settings to work properly. Please refer to this <a href="../guide.html" target="_blank" rel="noopener noreferrer">guide</a>.
+            <strong>Note:</strong> This page requires an extension or a change in the browser settings to work properly. Please refer to this <a href="guide.html" target="_blank" rel="noopener noreferrer">guide</a>.
         </p>
         <form id="carForm">
             <div class="form-group">
@@ -400,19 +304,7 @@
 
             return [headers.join(','), ...rows].join('\n');
         }
-
-        function downloadCsv(csvData, filename) {
-            const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
-            const url = URL.createObjectURL(blob);
-            link.setAttribute('href', url);
-            link.setAttribute('download', filename);
-            link.style.visibility = 'hidden';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-        }
     </script>
+    <script src="dataset.js"></script>
 </body>
 </html>

@@ -1,4 +1,8 @@
-/* SLU Styled Non-Scrolling Tabs */
+/* ==========================================================================
+   Research Page Styles (SLU Brand Aligned)
+   ========================================================================== */
+
+/* Non-Scrolling Category Tabs */
 .tab-bar {
   display: flex;
   flex-wrap: wrap;
@@ -11,7 +15,7 @@
 .tab-btn {
   padding: 0.5rem 0.85rem;
   border: 1px solid var(--slu-tan);
-  background: #F9F8F5;
+  background: var(--bg-card-alt);
   border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
@@ -31,8 +35,9 @@
   border-color: var(--slu-scarlet);
 }
 
+/* Category Overview Callout */
 .category-overview {
-  background: #FBF9F5;
+  background: var(--bg-card-warm);
   border: 1px solid var(--slu-tan);
   border-left: 4px solid var(--slu-scarlet);
   border-radius: 4px;
@@ -45,6 +50,7 @@
   color: var(--slu-brown);
 }
 
+/* Category Research Photos Grid */
 .research-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -65,32 +71,4 @@
     flex: 1 1 calc(50% - 0.4rem);
     text-align: center;
   }
-}
-
-/* Personal Research Gallery Figures */
-.research-media-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.research-media-gallery .media-thumb {
-  width: 140px;
-  height: 95px;
-  object-fit: cover;
-  border-radius: 4px;
-  border: 1px solid var(--border-light, #E0E0E0);
-  background: var(--slu-tan, #FBF9F5);
-}
-
-/* Hover and Click Styling for Zoomable Figures */
-.media-thumb.zoomable {
-  cursor: zoom-in;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.media-thumb.zoomable:hover {
-  transform: scale(1.04);
-  border-color: var(--slu-scarlet, #AA182C);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
 }

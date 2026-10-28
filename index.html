@@ -6,21 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <title>Dr. Choong-Soo Lee @ SLU | About</title>
   <link rel="stylesheet" href="assets/css/main.css" />
-  <style>
-    .profile-grid { display: grid; grid-template-columns: 1fr 220px; gap: 2rem; align-items: start; }
-    .profile-img { width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border); }
-    @media (max-width: 600px) { .profile-grid { grid-template-columns: 1fr; } }
-  </style>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SQYJCSM6S8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-SQYJCSM6S8');
-</script>
 <body>
 
   <header id="site-header"></header>
@@ -30,24 +16,25 @@
       <h2>About</h2>
       <div class="profile-grid">
         <div>
-          <h1 id="prof-name" style="color: var(--text-dark); font-size: 2rem;">Loading...</h1>
-          <p id="prof-title" style="color: var(--accent); font-weight: 600; margin-bottom: 1rem;"></p>
-          <p id="prof-bio"></p>
+          <h1 id="prof-name" class="profile-name">Loading...</h1>
+          <p id="prof-title" class="profile-title"></p>
+          <div id="prof-bio"></div>
         </div>
         <div id="photo-container"></div>
       </div>
     </section>
   </main>
+
   <footer id="site-footer"></footer>
   <script src="assets/js/main.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", async () => {
       const data = await loadSiteData("nav-about");
-      if (!data) return;
+      if (!data || !data.profile) return;
       const p = data.profile;
       document.getElementById("prof-name").innerText = p.name;
       document.getElementById("prof-title").innerText = `${p.title} — ${p.institution}`;
-      document.getElementById("prof-bio").innerText = p.bio;
+      document.getElementById("prof-bio").innerHTML = parseMarkdown(p.bio);
       if (p.photo) {
         document.getElementById("photo-container").innerHTML = `<img src="${p.photo}" alt="${p.name}" class="profile-img">`;
       }
